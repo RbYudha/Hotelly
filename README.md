@@ -1,2 +1,2 @@
-# Hotelly
+# hotelly
  Hotel storage management system
