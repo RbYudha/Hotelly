@@ -54,6 +54,17 @@ class Manajer extends CI_Controller
         $this->load->view('manajer_view/lihat_barang_keluar', $data1);
     }
 
+    public function lihat_barang_hilang()
+    {
+        $data['employee'] = $this->db->get_where('employee', ['email_employee' =>
+        $this->session->userdata('email_employee')])->row_array();
+
+        $data1['hasil'] = $this->data_tabel->tampil_barang_hilang();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('manajer_view/lihat_barang_hilang', $data1);
+    }
+
     function fetch()
     {
         $output = '';

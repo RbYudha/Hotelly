@@ -56,6 +56,9 @@ class data_tabel extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('baranghilang');
+        $this->db->join('kamar', 'baranghilang.no_kamar=kamar.no_kamar');
+        $this->db->join('barang', 'baranghilang.id_barang=barang.id_barang');
+        $this->db->join('employee', 'baranghilang.id_employee=employee.id_employee');
 
         $query = $this->db->get();
         return $query->result();
