@@ -17,7 +17,7 @@ class Employee extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function stok_barang()
+    public function tambah_barang()
     {
         $data['employee'] = $this->db->get_where('employee', ['email_employee' =>
         $this->session->userdata('email_employee')])->row_array();
@@ -38,22 +38,29 @@ class Employee extends CI_Controller
             'id_kategori' => $this->input->post('kategori'),
             'nama_barang' => $this->input->post('namabarang'),
             'harga_barang' => $this->input->post('hargabarang'),
-            'stok_total' => $this->input->post('stokbarang'),
+            'stok' => $this->input->post('stokbarang'),
         ];
         $this->db->insert('barang', $post1);
+
+        $transaksi1 = $this->input->post('stokbarang');
+        $transaksi2 = $this->input->post('hargabarang');
+        $transaksi = $transaksi1 * $transaksi2;
 
         $post2 = [
             'id_barang' => $this->input->post('idbarang'),
             'stok_barang' => $this->input->post('stokbarang'),
             'id_employee' => $this->input->post('idemployee'),
-            'date_stoking' => date('Y-m-d H:i:s')
+            'harga_pcs' => $this->input->post('hargabarang'),
+            'transaksi' => $transaksi,
+            'date_stoking' => $this->input->post('datepicker')
+            //'date_stoking' => date('Y-m-d H:i:s')
         ];
         $this->db->insert('stokingbarang', $post2);
 
         redirect('employee');
     }
 
-    public function tambah_barang()
+    public function stoking_barang()
     {
         $data['employee'] = $this->db->get_where('employee', ['email_employee' =>
         $this->session->userdata('email_employee')])->row_array();
@@ -68,11 +75,17 @@ class Employee extends CI_Controller
 
     public function tambah_barang1()
     {
+        $transaksi1 = $this->input->post('stokbarang');
+        $transaksi2 = $this->input->post('hargabarang');
+        $transaksi = $transaksi1 * $transaksi2;
+
         $post1 = [
             'id_barang' => $this->input->post('barang'),
             'stok_barang' => $this->input->post('stokbarang'),
             'id_employee' => $this->input->post('idemployee'),
-            'date_stoking' => date('Y-m-d H:i:s')
+            'harga_pcs' => $this->input->post('hargabarang'),
+            'transaksi' => $transaksi,
+            'date_stoking' => $this->input->post('datepicker')
         ];
         $this->db->insert('stokingbarang', $post1);
         redirect('employee');
@@ -98,7 +111,8 @@ class Employee extends CI_Controller
             'id_barang' => $this->input->post('barang'),
             'jumlah_ambil' => $this->input->post('stokbarang'),
             'id_employee' => $this->input->post('idemployee'),
-            'date_ambil' => date('Y-m-d H:i:s')
+            //'date_ambil' => date('Y-m-d H:i:s')
+            'date_ambil' => $this->input->post('datepicker')
         ];
         $this->db->insert('ambilbarang', $post1);
         redirect('employee');
@@ -126,7 +140,8 @@ class Employee extends CI_Controller
             'id_barang' => $this->input->post('barang'),
             'no_kamar' => $this->input->post('kamar'),
             'jumlah_hilang' => $this->input->post('jumlah_hilang'),
-            'date_hilang' => date('Y-m-d H:i:s')
+            //'date_hilang' => date('Y-m-d H:i:s')
+            'date_hilang' => $this->input->post('datepicker')
         ];
         $this->db->insert('baranghilang', $post1);
         redirect('employee');

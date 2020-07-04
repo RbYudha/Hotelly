@@ -39,7 +39,7 @@
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('manajer/lihat_barang_keluar') ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Data Barang Keluar</span></a>
+            <span>Data Pengambilan Barang</span></a>
     </li>
 
     <li class="nav-item">
@@ -106,10 +106,10 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-4 text-gray-800">Data Barang Keluar</h1>
+            <h1 class="h3 mb-4 text-gray-800">Data Barang Hilang</h1>
 
             <?php?>
-            <table class="table" id="tabel-data">
+            <table class="table table-striped" id="tabel-data">
                 <thead>
                     <tr>
                         <th>ID Hilang</th>
@@ -117,7 +117,7 @@
                         <th>Nama</th>
                         <th>Kamar</th>
                         <th>Jumlah</th>
-                        <th>Tanggal Keluar</th>
+                        <th>Tanggal Hilang</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -143,7 +143,12 @@
                 </script>
 
             </table>
-
+            <br>
+            <div class="container">
+                <a href="<?= base_url('data_visual/graph_barang_hilang') ?>" class="btn btn-info" role="button" class="btn btn-primary">Grafik barang hilang</a>
+                <a href="<?= base_url('data_visual/graph_barang_hilang2') ?>" class="btn btn-primary" role="button" class="btn btn-primary">Data barang hilang berdasarkan kategori kamar</a>
+            </div>
+            <br>
 
         </div>
         <!-- /.container-fluid -->

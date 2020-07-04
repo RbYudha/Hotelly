@@ -1,3 +1,20 @@
+<?php
+
+$this->db->select('SUM(jumlah_hilang) as total_hilang');
+$this->db->select('baranghilang.id_barang');
+$this->db->select('nama_barang');
+$this->db->select('nama_kategori_kmr');
+$this->db->from('baranghilang');
+$this->db->join('barang', 'baranghilang.id_barang=barang.id_barang');
+$this->db->join('kamar', 'baranghilang.no_kamar=kamar.no_kamar');
+$this->db->join('kategori_kamar', 'kamar.id_kategori_kmr=kategori_kamar.id_kategori_kmr');
+$this->db->group_by('nama_kategori_kmr');
+$dataProdukChart = $this->db->get()->result();
+foreach ($dataProdukChart as $k => $v) {
+    $arrProd[] = ['name' => $v->nama_kategori_kmr, 'y' => $v->total_hilang];
+}
+?>
+
 </head>
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
@@ -39,7 +56,7 @@
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('manajer/lihat_barang_keluar') ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Data Pengambilan Barang</span></a>
+            <span>Data Barang Keluar</span></a>
     </li>
 
     <li class="nav-item">
@@ -103,50 +120,54 @@
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
+        <!DOCTYPE HTML>
+        <html>
 
-            <!-- Page Heading -->
-            <h1 class="h3 mb-4 text-gray-800">Data Pengambilan barang</h1>
+        <head>
+            <script>
+                window.onload = function() {
 
-            <?php?>
-            <table class="table table-striped" id="tabel-data">
-                <thead>
-                    <tr>
-                        <th>Take ID</th>
-                        <th>Pegawai</th>
-                        <th>Nama</th>
-                        <th>Jumlah</th>
-                        <th>Tanggal Keluar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    foreach ($hasil as $item) {
-                    ?>
-                        <tr>
-                            <td><?php echo $item->id_ambil; ?></td>
-                            <td><?php echo $item->name_employee; ?></td>
-                            <td><?php echo $item->nama_barang; ?></td>
-                            <td><?php echo $item->jumlah_ambil; ?></td>
-                            <td><?php echo $item->date_ambil; ?></td>
-                        </tr>
-                    <?php
-                    }
-                    ?>
-                </tbody>
-                <script>
-                    $(document).ready(function() {
-                        $('#tabel-data').DataTable();
+                    var chart = new CanvasJS.Chart("chartContainer", {
+                        theme: "light2",
+                        exportEnabled: true,
+                        animationEnabled: true,
+                        title: {
+                            text: "Data barang hilang berdasarkan kategori kamar"
+                        },
+                        legend: {
+                            cursor: "pointer",
+                            itemclick: explodePie
+                        },
+                        data: [{
+                            type: "pie",
+                            showInLegend: true,
+                            toolTipContent: "{name}: <strong>{y}</strong>",
+                            indexLabel: "Jumlah - {y}",
+                            dataPoints: <?= json_encode($arrProd, JSON_NUMERIC_CHECK); ?>
+                        }]
                     });
-                </script>
-            </table>
-            <br>
-            <div class="container">
-                <a href="<?= base_url('data_visual/graph_ambil_barang') ?>" class="btn btn-info" role="button" class="btn btn-primary">Grafik pengambilan barang</a>
-            </div>
-            <br>
-        </div>
-        <!-- /.container-fluid -->
+                    chart.render();
+                }
 
-    </div>
-    <!-- End of Main Content -->
+                function explodePie(e) {
+                    if (typeof(e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+                        e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+                    } else {
+                        e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
+                    }
+                    e.chart.render();
+
+                }
+            </script>
+        </head>
+
+        <body>
+            <div id="chartContainer" style="height: 450px; width: 100%;"></div>
+            <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        </body>
+
+        <br>
+        <div class="container">
+            <a href="<?= base_url('manajer/lihat_barang_hilang') ?>" class="btn btn-info" role="button" class="btn btn-primary">Tabel barang hilang</a>
+            <a href="<?= base_url('data_visual/graph_barang_hilang') ?>" class="btn btn-primary" role="button" class="btn btn-primary">Grafik total barang hilang</a>
+        </div>

@@ -1,3 +1,17 @@
+<?php
+
+$this->db->select('SUM(jumlah_hilang) as total_hilang');
+$this->db->select('baranghilang.id_barang');
+$this->db->select('nama_barang');
+$this->db->from('baranghilang');
+$this->db->join('barang', 'baranghilang.id_barang=barang.id_barang');
+$this->db->group_by('nama_barang');
+$dataProdukChart = $this->db->get()->result();
+foreach ($dataProdukChart as $k => $v) {
+    $arrProd[] = ['label' => $v->nama_barang, 'y' => $v->total_hilang];
+}
+?>
+
 </head>
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
@@ -39,7 +53,7 @@
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('manajer/lihat_barang_keluar') ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Data Pengambilan Barang</span></a>
+            <span>Data Barang Keluar</span></a>
     </li>
 
     <li class="nav-item">
@@ -103,50 +117,42 @@
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
 
-            <!-- Page Heading -->
-            <h1 class="h3 mb-4 text-gray-800">Data Pengambilan barang</h1>
+        <head>
+            <script>
+                window.onload = function() {
 
-            <?php?>
-            <table class="table table-striped" id="tabel-data">
-                <thead>
-                    <tr>
-                        <th>Take ID</th>
-                        <th>Pegawai</th>
-                        <th>Nama</th>
-                        <th>Jumlah</th>
-                        <th>Tanggal Keluar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    foreach ($hasil as $item) {
-                    ?>
-                        <tr>
-                            <td><?php echo $item->id_ambil; ?></td>
-                            <td><?php echo $item->name_employee; ?></td>
-                            <td><?php echo $item->nama_barang; ?></td>
-                            <td><?php echo $item->jumlah_ambil; ?></td>
-                            <td><?php echo $item->date_ambil; ?></td>
-                        </tr>
-                    <?php
-                    }
-                    ?>
-                </tbody>
-                <script>
-                    $(document).ready(function() {
-                        $('#tabel-data').DataTable();
+                    var chart = new CanvasJS.Chart("chartContainer", {
+                        animationEnabled: true,
+                        theme: "light2",
+                        title: {
+                            text: "Data total barang hilang"
+                        },
+                        axisX: {
+                            interval: 1
+                        },
+                        axisY2: {
+                            title: "Jumlah hilang"
+                        },
+                        data: [{
+                            type: "bar",
+                            name: "Barang",
+                            axisYType: "primary",
+                            dataPoints: <?= json_encode($arrProd, JSON_NUMERIC_CHECK); ?>
+                        }]
                     });
-                </script>
-            </table>
-            <br>
-            <div class="container">
-                <a href="<?= base_url('data_visual/graph_ambil_barang') ?>" class="btn btn-info" role="button" class="btn btn-primary">Grafik pengambilan barang</a>
-            </div>
-            <br>
-        </div>
-        <!-- /.container-fluid -->
+                    chart.render();
 
-    </div>
-    <!-- End of Main Content -->
+                }
+            </script>
+        </head>
+
+        <body>
+            <div id="chartContainer" style="height: 450px; width: 100%;"></div>
+            <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        </body>
+        <br>
+        <div class="container">
+            <a href="<?= base_url('manajer/lihat_barang_hilang') ?>" class="btn btn-info" role="button" class="btn btn-primary">Tabel total barang hilang</a>
+            <a href="<?= base_url('data_visual/graph_barang_hilang2') ?>" class="btn btn-primary" role="button" class="btn btn-primary">Data barang hilang berdasarkan kategori kamar</a>
+        </div>

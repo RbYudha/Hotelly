@@ -1,3 +1,17 @@
+<head>
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+    <script type="text/javascript">
+        $(function() {
+            $("#datepicker").datepicker({
+                dateFormat: "yy-mm-dd"
+            }).val()
+        });
+    </script>
+</head>
+
 <div class="container-fluid">
     <div class="card mb-3" style="max-width: 720px;">
         <div class="card-body">
@@ -37,9 +51,11 @@
                         ?>
                     </select>
                 </div>
-
                 <div class="form-group">
                     <input type="text" class="form-control" id="jumlah_hilang" placeholder="Masukan jumlah barang yang hilang" name="jumlah_hilang">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="datepicker" placeholder="Masukan tanggal" name="datepicker">
                 </div>
 
                 <button type="submit" class="btn btn-primary btn-user btn-block">

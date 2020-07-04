@@ -38,7 +38,7 @@
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('manajer/lihat_barang_keluar') ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Data Barang Keluar</span></a>
+            <span>Data Pengambilan Barang</span></a>
     </li>
 
     <li class="nav-item">

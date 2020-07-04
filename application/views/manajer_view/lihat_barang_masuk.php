@@ -37,7 +37,7 @@
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('manajer/lihat_barang_keluar') ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Data Barang Keluar</span></a>
+            <span>Data Pengambilan Barang</span></a>
     </li>
 
     <li class="nav-item">
@@ -107,13 +107,15 @@
             <h1 class="h3 mb-4 text-gray-800">Data Barang Masuk</h1>
 
             <?php?>
-            <table class="table" id="tabel-data">
+            <table class="table table-striped" id="tabel-data">
                 <thead>
                     <tr>
                         <th>Stok ID</th>
                         <th>Pegawai</th>
                         <th>Nama</th>
                         <th>Jumlah</th>
+                        <th>Harga/Pcs</th>
+                        <th>Transaksi pembelian</th>
                         <th>Tanggal Masuk</th>
                     </tr>
                 </thead>
@@ -126,6 +128,8 @@
                             <td><?php echo $item->name_employee; ?></td>
                             <td><?php echo $item->nama_barang; ?></td>
                             <td><?php echo $item->stok_barang; ?></td>
+                            <td>Rp.<?php echo $item->harga_pcs; ?></td>
+                            <td>Rp.<?php echo $item->transaksi; ?></td>
                             <td><?php echo $item->date_stoking; ?></td>
                         </tr>
                     <?php
@@ -140,7 +144,11 @@
                 </script>
 
             </table>
-
+            <br>
+            <div class="container">
+                <a href="<?= base_url('data_visual/graph_stok_barang') ?>" class="btn btn-info" role="button" class="btn btn-primary">Grafik barang masuk</a>
+            </div>
+            <br>
         </div>
         <!-- /.container-fluid -->
 

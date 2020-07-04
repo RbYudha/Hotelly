@@ -1,3 +1,17 @@
+<head>
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+    <script type="text/javascript">
+        $(function() {
+            $("#datepicker").datepicker({
+                dateFormat: "yy-mm-dd"
+            }).val()
+        });
+    </script>
+</head>
+
 <div class="container-fluid">
     <div class="card mb-3" style="max-width: 720px;">
         <div class="card-body">
@@ -26,6 +40,9 @@
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" id="stokbarang" placeholder="Masukan jumlah barang" name="stokbarang">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="datepicker" placeholder="Masukan tanggal" name="datepicker">
                 </div>
                 <button type="submit" class="btn btn-primary btn-user btn-block">
                     Ambil

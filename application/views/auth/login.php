@@ -23,8 +23,8 @@
                                 <form class="user" method="post" action="<?= base_url('auth/index'); ?>">
 
                                     <?= $this->session->flashdata('messageSuc'); ?>
-
-                                    <div class="col-xs-3">
+                                    <br>
+                                    <div class="form-group">
                                         <!-- email -->
                                         <input type="text" class="form-control form-control-user" id="email" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email" value="<?= set_value('email') ?>">
                                         <?= form_error('email', '<small class="text-danger pl-3">', '</small>') ?>
@@ -39,6 +39,7 @@
                                     <button type="submit" class="btn btn-primary btn-user btn-block">
                                         Login
                                     </button>
+                                    <br>
                                     <hr>
                                 </form>
                                 <hr>

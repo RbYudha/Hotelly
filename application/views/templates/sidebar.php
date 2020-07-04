@@ -27,16 +27,16 @@
     <!-- Nav Item - Charts -->
     <li class="nav-item">
         <!-- pindah ke probis -->
-        <a class="nav-link" href="<?= base_url('employee/stok_barang') ?>">
+        <a class="nav-link" href="<?= base_url('employee/tambah_barang') ?>">
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>Stok Barang</span></a>
+            <span>Tambah Barang</span></a>
     </li>
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href=<?= base_url('employee/tambah_barang') ?>>
+        <a class="nav-link" href=<?= base_url('employee/stoking_barang') ?>>
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>Tambah Barang</span></a>
+            <span>Stoking Barang</span></a>
     </li>
 
     <!-- Nav Item - Charts -->

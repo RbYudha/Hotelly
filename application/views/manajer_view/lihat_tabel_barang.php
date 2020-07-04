@@ -39,7 +39,7 @@
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('manajer/lihat_barang_keluar') ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Data Barang Keluar</span></a>
+            <span>Data Pengambilan Barang</span></a>
     </li>
 
     <li class="nav-item">
@@ -103,96 +103,56 @@
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
 
-            <!-- Page Heading -->
-            <h1 class="h3 mb-4 text-gray-800">Data Total Barang</h1>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.1/sweetalert2.css">
 
-            <?php?>
-            <table class="table" id="tabel-data">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>ID</th>
-                        <th>Nama</th>
-                        <th>Harga</th>
-                        <th>Stok</th>
-                        <th>Kategori</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $no = 1;
-                    foreach ($hasil as $item) {
-                    ?>
-                        <tr>
-                            <td><?php echo $no; ?></td>
-                            <td><?php echo $item->id_barang; ?></td>
-                            <td><?php echo $item->nama_barang; ?></td>
-                            <td><?php echo $item->harga_barang; ?></td>
-                            <td><?php echo $item->stok; ?></td>
-                            <td><?php echo $item->name_kategori; ?></td>
-                        </tr>
-                    <?php
-                        $no++;
-                    }
-                    ?>
-                </tbody>
-                <script>
-                    $(document).ready(function() {
-                        $('#tabel-data').DataTable();
-                    });
-                </script>
+        </head>
 
-            </table>
+        <body>
 
-
-
-            <!-- <div class="form-group">
-                <div class="input-group">
-                    <input type="text" name="search_text" id="search_text" placeholder="Cari berdasarkan ID / nama barang" class="form-control" />
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#tambahbarang">Tambah Data</button>
+                        <h1 class="h3 mb-4 text-gray-800">Data Total Barang</h1>
+                        <hr>
+                        <table class="table table-striped" align="center" id="databarang">
+                            <thead align="center">
+                                <tr align="center">
+                                    <th>No</th>
+                                    <th>ID</th>
+                                    <th>Nama</th>
+                                    <th>Stok</th>
+                                    <th>Kategori</th>
+                                    <th>Opsi</th>
+                                </tr>
+                            </thead>
+                            <tbody align="center">
+                            </tbody>
+                        </table>
+                        <br>
+                        <div class="container">
+                            <!-- <button class="btn btn-success" data-toggle="modal" data-target="#myModalAdd">Tambah barang</button> -->
+                            <a href="<?= base_url('data_visual/index') ?>" class="btn btn-info" role="button" class="btn btn-primary">Grafik total barang</a>
+                        </div>
+                        <br>
+                    </div>
                 </div>
             </div>
-            <br />
-            <div id="result"></div>
-        </div>
-        <div style="clear:both"></div>
-        <br />
-        <br />
-        <br />
-        <br /> -->
 
-            <!-- <script>
-            $(document).ready(function() {
-
-                load_data();
-
-                function load_data(query) {
-                    $.ajax({
-                        url: "<?php echo base_url(); ?>Manajer/fetch",
-                        method: "POST",
-                        data: {
-                            query: query
-                        },
-                        success: function(data) {
-                            $('#result').html(data);
-                        }
-                    })
-                }
-
-                $('#search_text').keyup(function() {
-                    var search = $(this).val();
-                    if (search != '') {
-                        load_data(search);
-                    } else {
-                        load_data();
-                    }
-                });
-            });
-        </script> -->
-
-        </div>
-        <!-- /.container-fluid -->
+        </body>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script th:src="@{/js/datatables.min.js}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.1/sweetalert2.all.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
     </div>
     <!-- End of Main Content -->
