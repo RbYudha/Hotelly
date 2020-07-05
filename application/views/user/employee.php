@@ -4,6 +4,9 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">Hotel Employee</h1>
 
+    <!-- panggil session -->
+    <?= $this->session->flashdata('messageSuc'); ?>
+
     <div class="card mb-3" style="max-width: 540px;">
         <div class="row no-gutters">
             <div class="col-md-4">

@@ -132,4 +132,4 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('Dropdown', 'databarang_model');
+$autoload['model'] = array('Dropdown', 'databarang_model', 'datakaryawan_model', 'datakategori_model', 'datakamar_model', 'datakategori_kamar_model');

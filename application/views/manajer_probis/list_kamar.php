@@ -1,21 +1,3 @@
-<?php
-
-$this->db->select('SUM(jumlah_hilang) as total_hilang');
-$this->db->select('baranghilang.id_barang');
-$this->db->select('nama_barang');
-$this->db->select('nama_kategori_kmr');
-$this->db->from('baranghilang');
-$this->db->join('barang', 'baranghilang.id_barang=barang.id_barang');
-$this->db->join('kamar', 'baranghilang.no_kamar=kamar.no_kamar');
-$this->db->join('kategori_kamar', 'kamar.id_kategori_kmr=kategori_kamar.id_kategori_kmr');
-$this->db->group_by('nama_kategori_kmr');
-$dataProdukChart = $this->db->get()->result();
-foreach ($dataProdukChart as $k => $v) {
-    $arrProd[] = ['name' => $v->nama_kategori_kmr, 'y' => $v->total_hilang];
-}
-?>
-
-</head>
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -131,59 +113,50 @@ foreach ($dataProdukChart as $k => $v) {
                 </li>
 
             </ul>
-
         </nav>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <!DOCTYPE HTML>
-        <html>
 
         <head>
-            <script>
-                window.onload = function() {
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.1/sweetalert2.css">
 
-                    var chart = new CanvasJS.Chart("chartContainer", {
-                        theme: "light2",
-                        exportEnabled: true,
-                        animationEnabled: true,
-                        title: {
-                            text: "Data barang hilang berdasarkan kategori kamar"
-                        },
-                        legend: {
-                            cursor: "pointer",
-                            itemclick: explodePie
-                        },
-                        data: [{
-                            type: "pie",
-                            showInLegend: true,
-                            toolTipContent: "{name}: <strong>{y}</strong>",
-                            indexLabel: "Jumlah - {y}",
-                            dataPoints: <?= json_encode($arrProd, JSON_NUMERIC_CHECK); ?>
-                        }]
-                    });
-                    chart.render();
-                }
-
-                function explodePie(e) {
-                    if (typeof(e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
-                        e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
-                    } else {
-                        e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
-                    }
-                    e.chart.render();
-
-                }
-            </script>
         </head>
 
         <body>
-            <div id="chartContainer" style="height: 450px; width: 100%;"></div>
-            <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-        </body>
 
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#tambahkamar">Tambah Data</button>
+                        <h1 class="h3 mb-4 text-gray-800">List Kamar</h1>
+                        <hr>
+                        <table class="table table-striped" align="center" id="datakamar">
+                            <thead align="center">
+                                <tr>
+                                    <th>No kamar</th>
+                                    <th>Kategori kamar</th>
+                                    <th>Opsi</th>
+                                </tr>
+                            </thead>
+                            <tbody align="center">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </body>
         <br>
-        <div class="container">
-            <a href="<?= base_url('manajer/lihat_barang_hilang') ?>" class="btn btn-info" role="button" class="btn btn-primary">Tabel barang hilang</a>
-            <a href="<?= base_url('data_visual/graph_barang_hilang') ?>" class="btn btn-primary" role="button" class="btn btn-primary">Grafik total barang hilang</a>
-        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.1/sweetalert2.all.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+
+        <!-- End of Main Content -->

@@ -3,6 +3,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Employee extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->library('form_validation');
+    }
+
     public function index()
     {
         //kirimm data ke view
@@ -56,7 +62,8 @@ class Employee extends CI_Controller
             //'date_stoking' => date('Y-m-d H:i:s')
         ];
         $this->db->insert('stokingbarang', $post2);
-
+        $this->session->set_flashdata('messageSuc', '<div class="alert alert-success" role="alert">
+        Barang berhasil ditambahkan!</div>');
         redirect('employee');
     }
 
@@ -88,6 +95,8 @@ class Employee extends CI_Controller
             'date_stoking' => $this->input->post('datepicker')
         ];
         $this->db->insert('stokingbarang', $post1);
+        $this->session->set_flashdata('messageSuc', '<div class="alert alert-success" role="alert">
+        Re-stok barang berhasil!</div>');
         redirect('employee');
     }
 
@@ -115,6 +124,8 @@ class Employee extends CI_Controller
             'date_ambil' => $this->input->post('datepicker')
         ];
         $this->db->insert('ambilbarang', $post1);
+        $this->session->set_flashdata('messageSuc', '<div class="alert alert-success" role="alert">
+        Pengambilan Barang berhasil!</div>');
         redirect('employee');
     }
 
@@ -144,6 +155,8 @@ class Employee extends CI_Controller
             'date_hilang' => $this->input->post('datepicker')
         ];
         $this->db->insert('baranghilang', $post1);
+        $this->session->set_flashdata('messageSuc', '<div class="alert alert-success" role="alert">
+        Barang hilang berhasil dilaporkan!</div>');
         redirect('employee');
     }
 }

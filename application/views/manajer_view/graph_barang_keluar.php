@@ -119,40 +119,56 @@ foreach ($dataProdukChart as $k => $v) {
 
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('manajer/index') ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fa fa-user"></i>
             <span>My Profile</span></a>
     </li>
 
-
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('manajer/lihat_barang') ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fa fa-table" aria-hidden="true"></i>
             <span>Data Total Barang</span></a>
     </li>
 
-    <li class="nav-item">
+    <li class=" nav-item">
         <a class="nav-link" href="<?= base_url('manajer/lihat_barang_masuk') ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fa fa-table" aria-hidden="true"></i>
             <span>Data Barang Masuk</span></a>
     </li>
 
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('manajer/lihat_barang_keluar') ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Data Barang Keluar</span></a>
+            <i class="fa fa-table" aria-hidden="true"></i>
+            <span>Data Pengambilan Barang</span></a>
     </li>
 
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('manajer/lihat_barang_hilang') ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fa fa-table" aria-hidden="true"></i>
             <span>Data Barang Hilang</span></a>
     </li>
 
-    <!-- Sidebar Toggler (Sidebar)
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div> -->
+    <hr class="sidebar-divider">
 
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('manajer_job/index') ?>">
+            <i class="fa fa-users" aria-hidden="true"></i>
+            <span>Data Karyawan</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('manajer_job/lihat_list_kategori') ?>">
+            <i class="fa fa-list" aria-hidden="true"></i>
+            <span>List Kategori Barang</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('manajer_job/lihat_list_kamar') ?>">
+            <i class="fa fa-list" aria-hidden="true"></i>
+            <span>List Kamar</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('manajer_job/lihat_list_kategori_kamar') ?>">
+            <i class="fa fa-list" aria-hidden="true"></i>
+            <span>List Kategori Kamar</span></a>
+    </li>
 </ul>
 <!-- End of Sidebar -->
 

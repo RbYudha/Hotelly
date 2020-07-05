@@ -26,4 +26,16 @@ class Dropdown extends CI_Model
         // $query = $this->db->get('kamar');
         // return $query;
     }
+
+    function tampil_data_role()
+    {
+        $query = $this->db->get('role');
+        return $query;
+    }
+
+    function tampil_data_kategori_kamar()
+    {
+        $query = $this->db->get('kategori_kamar');
+        return $query;
+    }
 }

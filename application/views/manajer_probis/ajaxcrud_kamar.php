@@ -1,67 +1,55 @@
-<!-- Modal untuk tambah data barang -->
-<div class="modal fade" id="tambahbarang" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal untuk tambah data kamar -->
+<div class="modal fade" id="tambahkamar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Barang</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Tambah kamar</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form id="formtambahdatabarang">
+                <form id="formtambahdatakamar">
                     <div class="form-group row">
-                        <label for="inputID" class="col-sm-2 col-form-label">ID</label>
+                        <label for="inputnama" class="col-sm-2 col-form-label">No</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="id" id="id" placeholder="ID barang">
+                            <input type="text" class="form-control" id="nomor" placeholder="masukan nomor kamar">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputnama" class="col-sm-2 col-form-label">Nama</label>
+                        <label for="inputrole" class="col-sm-2 col-form-label">Kategori</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="nama_barang" placeholder="Nama barang">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputharga" class="col-sm-2 col-form-label">Harga</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="harga_barang" placeholder="Harga barang">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputjumlah" class="col-sm-2 col-form-label">Jumlah</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="stok" placeholder="Jumlah barang">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputjumlah" class="col-sm-2 col-form-label">Kategori</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="id_kategori" placeholder="ID kategori">
+                            <select class="form-control" id="kategorikamar">
+                                <?php
+                                foreach ($datakategori->result() as $kategori) {
+                                    echo "<option value=" . $kategori->id_kategori_kmr . ">" . $kategori->id_kategori_kmr . '-' . $kategori->nama_kategori_kmr . "</option>";
+                                }
+                                ?>
+                            </select>
                         </div>
                     </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                <button type="submit" class="btn btn-primary">Tambah Data Barang</button>
+                <button type="submit" class="btn btn-primary">Tambah Data kamar</button>
             </div>
             </form>
         </div>
     </div>
 </div>
 
-<!-- Modal untuk edit data barang -->
-<div class="modal fade" id="editbarang" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal untuk edit data kamar -->
+<div class="modal fade" id="editkamar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Data Barang</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Edit Data kamar</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <div id="formdatabarang">
+                <div id="formdatakamar">
 
                 </div>
             </div>
@@ -70,27 +58,23 @@
 
     <script>
         $(document).ready(function() {
-            var databarang = $('#databarang').DataTable({
+            // ini adalah fungsi untuk mengambil data kamar dan di  incluce ke dalam datatable
+            var datakamar = $('#datakamar').DataTable({
                 "processing": true,
-                "ajax": "<?= base_url("index.php/manajer/databarang") ?>",
+                "ajax": "<?= base_url("manajer_job/datakamar") ?>",
                 stateSave: true,
                 "order": []
             })
 
-
             // fungsi untuk menambah data  
-            // pilih selector dari yang id formtambahdatabarang
-            $('#formtambahdatabarang').on('submit', function() {
-
-                var id = $('#id').val();
-                var nama_barang = $('#nama_barang').val();
-                var harga_barang = $('#harga_barang').val();
-                var stok = $('#stok').val();
-                var id_kategori = $('#id_kategori').val();
+            // pilih selector dari yang id formtambahdatakamar  
+            $('#formtambahdatakamar').on('submit', function() {
+                var nomor = $('#nomor').val();
+                var kategorikamar = $('#kategorikamar').val();
 
                 $.ajax({
                     type: "post",
-                    url: "<?= base_url('manajer/tambahbarang') ?>",
+                    url: "<?= base_url('manajer_job/tambahkamar') ?>",
                     beforeSend: function() {
                         swal({
                             title: 'Menunggu',
@@ -101,41 +85,34 @@
                         })
                     },
                     data: {
-                        id: id,
-                        nama_barang: nama_barang,
-                        harga_barang: harga_barang,
-                        stok: stok,
-                        id_kategori: id_kategori
+                        nomor: nomor,
+                        kategorikamar: kategorikamar
                     }, // ambil datanya dari form yang ada di variabel
                     dataType: "JSON",
                     success: function(data) {
-                        databarang.ajax.reload(null, false);
+                        datakamar.ajax.reload(null, false);
                         swal({
                             type: 'success',
-                            title: 'Tambah Barang',
-                            text: 'Anda Berhasil Menambah Barang'
+                            title: 'Tambah kamar',
+                            text: 'Anda Berhasil Menambah kamar'
                         })
                         // bersihkan form pada modal
-                        $('#tambahbarang').modal('hide');
+                        $('#tambahkamar').modal('hide');
                         // tutup modal
-                        $('#id').val('');
-                        $('#nama_barang').val('');
-                        $('#harga_barang').val('');
-                        $('#stok').val('');
-                        $('#id_kategori').val('');
+                        $('#nama').val('');
+                        $('#alamat').val('');
+
                     }
                 })
                 return false;
             });
-            // fungsi untuk edit data
-            //pilih selector dari table id datamahasiswa dengan class .ubah-mahasiswa
-            $('#databarang').on('click', '.ubah-barang', function() {
-                // ambil element data-id pada saat klik ubah
+            $('#datakamar').on('click', '.ubah-kamar', function() {
+                // ambil element id pada saat klik ubah
                 var id = $(this).data('id');
 
                 $.ajax({
                     type: "post",
-                    url: "<?= base_url('manajer/formedit') ?>",
+                    url: "<?= base_url('manajer_job/formedit_kamar') ?>",
                     beforeSend: function() {
                         swal({
                             title: 'Menunggu',
@@ -150,21 +127,18 @@
                     },
                     success: function(data) {
                         swal.close();
-                        $('#editbarang').modal('show');
-                        $('#formdatabarang').html(data);
+                        $('#editkamar').modal('show');
+                        $('#formdatakamar').html(data);
 
                         // proses untuk mengubah data
-                        $('#formubahdatabarang').on('submit', function() {
-                            var editid = $('#editid').val(); //diambil dari id yang ada di form modal
-                            var editnama = $('#editnama').val(); // diambil dari id nama yang ada diform modal
-                            var editharga = $('#editharga').val(); // diambil dari id harga yanag ada di form modal
-                            var editstok = $('#editstok').val();
-                            var editidkategori = $('#editidkategori').val();
-                            var id = $('#idbarang').val();
+                        $('#formubahdatakamar').on('submit', function() {
+                            var editno = $('#editno').val();
+                            var editkategori = $('#editkategori').val();
+                            var id = $('#no_kamar').val();
 
                             $.ajax({
                                 type: "post",
-                                url: "<?= base_url('manajer/ubahbarang') ?>",
+                                url: "<?= base_url('manajer_job/ubahkamar') ?>",
                                 beforeSend: function() {
                                     swal({
                                         title: 'Menunggu',
@@ -175,24 +149,20 @@
                                     })
                                 },
                                 data: {
-                                    editid: editid,
-                                    editnama: editnama,
-                                    editharga: editharga,
-                                    editstok: editstok,
-                                    editidkategori: editidkategori,
-                                    id: id,
-
+                                    editno: editno,
+                                    editkategori: editkategori,
+                                    id: id
                                 }, // ambil datanya dari form yang ada di variabel
 
                                 success: function(data) {
-                                    databarang.ajax.reload(null, false);
+                                    datakamar.ajax.reload(null, false);
                                     swal({
                                         type: 'success',
-                                        title: 'Update Barang',
-                                        text: 'Anda Berhasil Mengubah Data Barang'
+                                        title: 'Update kamar',
+                                        text: 'Anda Berhasil Mengubah Data kamar'
                                     })
                                     // bersihkan form pada modal
-                                    $('#editbarang').modal('hide');
+                                    $('#editkamar').modal('hide');
                                 }
                             })
                             return false;
@@ -201,8 +171,8 @@
                 });
             });
             // fungsi untuk hapus data
-            //pilih selector dari table id datamahasiswa dengan class .hapus-mahasiswa
-            $('#databarang').on('click', '.hapus-barang', function() {
+            //pilih selector dari table id datakamar dengan class .hapus-kamar
+            $('#datakamar').on('click', '.hapus-kamar', function() {
                 var id = $(this).data('id');
                 swal({
                     title: 'Konfirmasi',
@@ -217,7 +187,7 @@
                 }).then((result) => {
                     if (result.value) {
                         $.ajax({
-                            url: "<?= base_url('manajer/hapusbarang') ?>",
+                            url: "<?= base_url('manajer_job/hapuskamar') ?>",
                             method: "post",
                             beforeSend: function() {
                                 swal({
@@ -237,7 +207,56 @@
                                     'Berhasil Terhapus',
                                     'success'
                                 )
-                                databarang.ajax.reload(null, false)
+                                datakamar.ajax.reload(null, false)
+                            }
+                        })
+                    } else if (result.dismiss === swal.DismissReason.cancel) {
+                        swal(
+                            'Batal',
+                            'Anda membatalkan penghapusan',
+                            'error'
+                        )
+                    }
+                })
+            });
+            // fungsi untuk hapus data
+            //pilih selector dari table id datakamar dengan class .hapus-kamar
+            $('#datakamar').on('click', '.hapus-kamar', function() {
+                var id = $(this).data('id');
+                swal({
+                    title: 'Konfirmasi',
+                    text: "Anda ingin menghapus ",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Hapus',
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    cancelButtonText: 'Tidak',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.value) {
+                        $.ajax({
+                            url: "<?= base_url('manajer_job/hapuskamar') ?>",
+                            method: "post",
+                            beforeSend: function() {
+                                swal({
+                                    title: 'Menunggu',
+                                    html: 'Memproses data',
+                                    onOpen: () => {
+                                        swal.showLoading()
+                                    }
+                                })
+                            },
+                            data: {
+                                id: id
+                            },
+                            success: function(data) {
+                                swal(
+                                    'Hapus',
+                                    'Berhasil Terhapus',
+                                    'success'
+                                )
+                                datakamar.ajax.reload(null, false)
                             }
                         })
                     } else if (result.dismiss === swal.DismissReason.cancel) {

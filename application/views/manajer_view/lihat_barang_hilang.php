@@ -1,4 +1,3 @@
-</head>
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -19,40 +18,56 @@
 
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('manajer/index') ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fa fa-user"></i>
             <span>My Profile</span></a>
     </li>
 
-
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('manajer/lihat_barang') ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fa fa-table" aria-hidden="true"></i>
             <span>Data Total Barang</span></a>
     </li>
 
-    <li class="nav-item">
+    <li class=" nav-item">
         <a class="nav-link" href="<?= base_url('manajer/lihat_barang_masuk') ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fa fa-table" aria-hidden="true"></i>
             <span>Data Barang Masuk</span></a>
     </li>
 
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('manajer/lihat_barang_keluar') ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fa fa-table" aria-hidden="true"></i>
             <span>Data Pengambilan Barang</span></a>
     </li>
 
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('manajer/lihat_barang_hilang') ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fa fa-table" aria-hidden="true"></i>
             <span>Data Barang Hilang</span></a>
     </li>
 
-    <!-- Sidebar Toggler (Sidebar)
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div> -->
+    <hr class="sidebar-divider">
 
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('manajer_job/index') ?>">
+            <i class="fa fa-users" aria-hidden="true"></i>
+            <span>Data Karyawan</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('manajer_job/lihat_list_kategori') ?>">
+            <i class="fa fa-list" aria-hidden="true"></i>
+            <span>List Kategori Barang</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('manajer_job/lihat_list_kamar') ?>">
+            <i class="fa fa-list" aria-hidden="true"></i>
+            <span>List Kamar</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('manajer_job/lihat_list_kategori_kamar') ?>">
+            <i class="fa fa-list" aria-hidden="true"></i>
+            <span>List Kategori Kamar</span></a>
+    </li>
 </ul>
 <!-- End of Sidebar -->
 
@@ -146,7 +161,7 @@
             <br>
             <div class="container">
                 <a href="<?= base_url('data_visual/graph_barang_hilang') ?>" class="btn btn-info" role="button" class="btn btn-primary">Grafik barang hilang</a>
-                <a href="<?= base_url('data_visual/graph_barang_hilang2') ?>" class="btn btn-primary" role="button" class="btn btn-primary">Data barang hilang berdasarkan kategori kamar</a>
+                <a href="<?= base_url('data_visual/graph_barang_hilang2') ?>" class="btn btn-primary" role="button" class="btn btn-primary">PieChart barang hilang berdasarkan kategori kamar</a>
             </div>
             <br>
 

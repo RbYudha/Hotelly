@@ -1,67 +1,73 @@
-<!-- Modal untuk tambah data barang -->
-<div class="modal fade" id="tambahbarang" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal untuk tambah data karyawan -->
+<div class="modal fade" id="tambahkaryawan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Barang</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Tambah karyawan</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form id="formtambahdatabarang">
+                <form id="formtambahdatakaryawan">
                     <div class="form-group row">
-                        <label for="inputID" class="col-sm-2 col-form-label">ID</label>
+                        <label for="inputID" class="col-sm-2 col-form-label">Nama</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="id" id="id" placeholder="ID barang">
+                            <input type="text" class="form-control" id="nama_karyawan" placeholder="Nama karyawan">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputnama" class="col-sm-2 col-form-label">Nama</label>
+                        <label for="inputnama" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="nama_barang" placeholder="Nama barang">
+                            <input type="text" class="form-control" id="alamat_email" placeholder="Alamat email">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputharga" class="col-sm-2 col-form-label">Harga</label>
+                        <label for="inputpass" class="col-sm-2 col-form-label">Password</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="harga_barang" placeholder="Harga barang">
+                            <input type="password" class="form-control" id="pass_karyawan" placeholder="Password">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputjumlah" class="col-sm-2 col-form-label">Jumlah</label>
+                        <label for="inputrole" class="col-sm-2 col-form-label">Role</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="stok" placeholder="Jumlah barang">
+                            <select class="form-control" id="role_karyawan">
+                                <?php
+                                foreach ($datakategori->result() as $kategori) {
+                                    echo "<option value=" . $kategori->id_role . ">" . $kategori->id_role . '-' . $kategori->name_role . "</option>";
+                                }
+                                ?>
+                            </select>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="inputjumlah" class="col-sm-2 col-form-label">Kategori</label>
+                    <!-- <div class="form-group row">
+                        <label for="inputrole" class="col-sm-2 col-form-label">Role</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="id_kategori" placeholder="ID kategori">
+                            <input type="text" class="form-control" id="role_karyawan" placeholder="Role karyawan">
                         </div>
-                    </div>
+                    </div> -->
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                <button type="submit" class="btn btn-primary">Tambah Data Barang</button>
+                <button type="submit" class="btn btn-primary">Tambah Data karyawan</button>
             </div>
             </form>
         </div>
     </div>
 </div>
 
-<!-- Modal untuk edit data barang -->
-<div class="modal fade" id="editbarang" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal untuk edit data karyawan -->
+<div class="modal fade" id="editkaryawan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Data Barang</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Edit Data karyawan</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <div id="formdatabarang">
+                <div id="formdatakaryawan">
 
                 </div>
             </div>
@@ -70,27 +76,26 @@
 
     <script>
         $(document).ready(function() {
-            var databarang = $('#databarang').DataTable({
+            // ini adalah fungsi untuk mengambil data karyawan dan di  incluce ke dalam datatable
+            var datakaryawan = $('#datakaryawan').DataTable({
                 "processing": true,
-                "ajax": "<?= base_url("index.php/manajer/databarang") ?>",
+                "ajax": "<?= base_url("manajer_job/datakaryawan") ?>",
                 stateSave: true,
                 "order": []
             })
 
-
             // fungsi untuk menambah data  
-            // pilih selector dari yang id formtambahdatabarang
-            $('#formtambahdatabarang').on('submit', function() {
+            // pilih selector dari yang id formtambahdatakaryawan  
+            $('#formtambahdatakaryawan').on('submit', function() {
 
-                var id = $('#id').val();
-                var nama_barang = $('#nama_barang').val();
-                var harga_barang = $('#harga_barang').val();
-                var stok = $('#stok').val();
-                var id_kategori = $('#id_kategori').val();
+                var nama_karyawan = $('#nama_karyawan').val();
+                var alamat_email = $('#alamat_email').val();
+                var pass_karyawan = $('#pass_karyawan').val();
+                var role_karyawan = $('#role_karyawan').val();
 
                 $.ajax({
                     type: "post",
-                    url: "<?= base_url('manajer/tambahbarang') ?>",
+                    url: "<?= base_url('manajer_job/tambahkaryawan') ?>",
                     beforeSend: function() {
                         swal({
                             title: 'Menunggu',
@@ -101,41 +106,37 @@
                         })
                     },
                     data: {
-                        id: id,
-                        nama_barang: nama_barang,
-                        harga_barang: harga_barang,
-                        stok: stok,
-                        id_kategori: id_kategori
+                        nama_karyawan: nama_karyawan,
+                        alamat_email: alamat_email,
+                        pass_karyawan: pass_karyawan,
+                        role_karyawan: role_karyawan
                     }, // ambil datanya dari form yang ada di variabel
                     dataType: "JSON",
                     success: function(data) {
-                        databarang.ajax.reload(null, false);
+                        datakaryawan.ajax.reload(null, false);
                         swal({
                             type: 'success',
-                            title: 'Tambah Barang',
-                            text: 'Anda Berhasil Menambah Barang'
+                            title: 'Tambah karyawan',
+                            text: 'Anda Berhasil Menambah karyawan'
                         })
                         // bersihkan form pada modal
-                        $('#tambahbarang').modal('hide');
+                        $('#tambahkaryawan').modal('hide');
                         // tutup modal
-                        $('#id').val('');
-                        $('#nama_barang').val('');
-                        $('#harga_barang').val('');
-                        $('#stok').val('');
-                        $('#id_kategori').val('');
+                        $('#nama_karyawan').val();
+                        $('#alamat_email').val();
+                        $('#pass_karyawan').val();
+                        $('#role_karyawan').val();
                     }
                 })
                 return false;
             });
-            // fungsi untuk edit data
-            //pilih selector dari table id datamahasiswa dengan class .ubah-mahasiswa
-            $('#databarang').on('click', '.ubah-barang', function() {
-                // ambil element data-id pada saat klik ubah
+            $('#datakaryawan').on('click', '.ubah-karyawan', function() {
+                // ambil element id pada saat klik ubah
                 var id = $(this).data('id');
 
                 $.ajax({
                     type: "post",
-                    url: "<?= base_url('manajer/formedit') ?>",
+                    url: "<?= base_url('manajer_job/formedit_karyawan') ?>",
                     beforeSend: function() {
                         swal({
                             title: 'Menunggu',
@@ -150,21 +151,18 @@
                     },
                     success: function(data) {
                         swal.close();
-                        $('#editbarang').modal('show');
-                        $('#formdatabarang').html(data);
+                        $('#editkaryawan').modal('show');
+                        $('#formdatakaryawan').html(data);
 
                         // proses untuk mengubah data
-                        $('#formubahdatabarang').on('submit', function() {
-                            var editid = $('#editid').val(); //diambil dari id yang ada di form modal
-                            var editnama = $('#editnama').val(); // diambil dari id nama yang ada diform modal
-                            var editharga = $('#editharga').val(); // diambil dari id harga yanag ada di form modal
-                            var editstok = $('#editstok').val();
-                            var editidkategori = $('#editidkategori').val();
-                            var id = $('#idbarang').val();
+                        $('#formubahdatakaryawan').on('submit', function() {
+                            var editnama = $('#editnama').val();
+                            var editemail = $('#editemail').val();
+                            var id = $('#id_karyawan').val();
 
                             $.ajax({
                                 type: "post",
-                                url: "<?= base_url('manajer/ubahbarang') ?>",
+                                url: "<?= base_url('manajer_job/ubahkaryawan') ?>",
                                 beforeSend: function() {
                                     swal({
                                         title: 'Menunggu',
@@ -175,24 +173,21 @@
                                     })
                                 },
                                 data: {
-                                    editid: editid,
                                     editnama: editnama,
-                                    editharga: editharga,
-                                    editstok: editstok,
-                                    editidkategori: editidkategori,
+                                    editemail: editemail,
                                     id: id,
 
                                 }, // ambil datanya dari form yang ada di variabel
 
                                 success: function(data) {
-                                    databarang.ajax.reload(null, false);
+                                    datakaryawan.ajax.reload(null, false);
                                     swal({
                                         type: 'success',
-                                        title: 'Update Barang',
-                                        text: 'Anda Berhasil Mengubah Data Barang'
+                                        title: 'Update karyawan',
+                                        text: 'Anda Berhasil Mengubah Data karyawan'
                                     })
                                     // bersihkan form pada modal
-                                    $('#editbarang').modal('hide');
+                                    $('#editkaryawan').modal('hide');
                                 }
                             })
                             return false;
@@ -202,7 +197,7 @@
             });
             // fungsi untuk hapus data
             //pilih selector dari table id datamahasiswa dengan class .hapus-mahasiswa
-            $('#databarang').on('click', '.hapus-barang', function() {
+            $('#datakaryawan').on('click', '.hapus-karyawan', function() {
                 var id = $(this).data('id');
                 swal({
                     title: 'Konfirmasi',
@@ -217,7 +212,7 @@
                 }).then((result) => {
                     if (result.value) {
                         $.ajax({
-                            url: "<?= base_url('manajer/hapusbarang') ?>",
+                            url: "<?= base_url('manajer_job/hapuskaryawan') ?>",
                             method: "post",
                             beforeSend: function() {
                                 swal({
@@ -237,7 +232,7 @@
                                     'Berhasil Terhapus',
                                     'success'
                                 )
-                                databarang.ajax.reload(null, false)
+                                datakaryawan.ajax.reload(null, false)
                             }
                         })
                     } else if (result.dismiss === swal.DismissReason.cancel) {
