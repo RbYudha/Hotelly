@@ -1,101 +1,88 @@
 <?php
 $this->db->select('*');
 $this->db->where('id_barang', '111');
-$dataProdukChart = $this->db->get("ambilbarang")->result();
+$dataProdukChart = $this->db->get("stokingbarang")->result();
 foreach ($dataProdukChart as $k => $v) {
-    $arrProd1[] = ['label' => $v->date_ambil,  'y' => $v->jumlah_ambil];
+    $arrProd1[] = ['label' => $v->date_stoking,  'y' => $v->harga_pcs];
 }
 
 $this->db->select('*');
 $this->db->where('id_barang', '112');
-$dataProdukChart = $this->db->get("ambilbarang")->result();
+$dataProdukChart = $this->db->get("stokingbarang")->result();
 foreach ($dataProdukChart as $k => $v) {
-    $arrProd2[] = ['label' => $v->date_ambil,  'y' => $v->jumlah_ambil];
+    $arrProd2[] = ['label' => $v->date_stoking,  'y' => $v->harga_pcs];
 }
 
 $this->db->select('*');
 $this->db->where('id_barang', '113');
-$dataProdukChart = $this->db->get("ambilbarang")->result();
+$dataProdukChart = $this->db->get("stokingbarang")->result();
 foreach ($dataProdukChart as $k => $v) {
-    $arrProd3[] = ['label' => $v->date_ambil,  'y' => $v->jumlah_ambil];
+    $arrProd3[] = ['label' => $v->date_stoking,  'y' => $v->harga_pcs];
 }
-?>
 
-<?php
 $this->db->select('*');
 $this->db->where('id_barang', '211');
-$dataProdukChart = $this->db->get("ambilbarang")->result();
+$dataProdukChart = $this->db->get("stokingbarang")->result();
 foreach ($dataProdukChart as $k => $v) {
-    $arrProd4[] = ['label' => $v->date_ambil,  'y' => $v->jumlah_ambil];
+    $arrProd4[] = ['label' => $v->date_stoking,  'y' => $v->harga_pcs];
 }
 
 $this->db->select('*');
 $this->db->where('id_barang', '212');
-$dataProdukChart = $this->db->get("ambilbarang")->result();
+$dataProdukChart = $this->db->get("stokingbarang")->result();
 foreach ($dataProdukChart as $k => $v) {
-    $arrProd5[] = ['label' => $v->date_ambil,  'y' => $v->jumlah_ambil];
+    $arrProd5[] = ['label' => $v->date_stoking,  'y' => $v->harga_pcs];
 }
 
 $this->db->select('*');
 $this->db->where('id_barang', '213');
-$dataProdukChart = $this->db->get("ambilbarang")->result();
+$dataProdukChart = $this->db->get("stokingbarang")->result();
 foreach ($dataProdukChart as $k => $v) {
-    $arrProd6[] = ['label' => $v->date_ambil,  'y' => $v->jumlah_ambil];
+    $arrProd6[] = ['label' => $v->date_stoking,  'y' => $v->harga_pcs];
 }
 
 $this->db->select('*');
 $this->db->where('id_barang', '214');
-$dataProdukChart = $this->db->get("ambilbarang")->result();
+$dataProdukChart = $this->db->get("stokingbarang")->result();
 foreach ($dataProdukChart as $k => $v) {
-    $arrProd7[] = ['label' => $v->date_ambil,  'y' => $v->jumlah_ambil];
+    $arrProd7[] = ['label' => $v->date_stoking,  'y' => $v->harga_pcs];
 }
-?>
 
-<?php
 $this->db->select('*');
 $this->db->where('id_barang', '311');
-$dataProdukChart = $this->db->get("ambilbarang")->result();
+$dataProdukChart = $this->db->get("stokingbarang")->result();
 foreach ($dataProdukChart as $k => $v) {
-    $arrProd8[] = ['label' => $v->date_ambil,  'y' => $v->jumlah_ambil];
+    $arrProd8[] = ['label' => $v->date_stoking,  'y' => $v->harga_pcs];
 }
 
 $this->db->select('*');
 $this->db->where('id_barang', '312');
-$dataProdukChart = $this->db->get("ambilbarang")->result();
+$dataProdukChart = $this->db->get("stokingbarang")->result();
 foreach ($dataProdukChart as $k => $v) {
-    $arrProd9[] = ['label' => $v->date_ambil,  'y' => $v->jumlah_ambil];
+    $arrProd9[] = ['label' => $v->date_stoking,  'y' => $v->harga_pcs];
 }
-?>
 
-<?php
 $this->db->select('*');
 $this->db->where('id_barang', '411');
-$dataProdukChart = $this->db->get("ambilbarang")->result();
+$dataProdukChart = $this->db->get("stokingbarang")->result();
 foreach ($dataProdukChart as $k => $v) {
-    $arrProd10[] = ['label' => $v->date_ambil,  'y' => $v->jumlah_ambil];
+    $arrProd10[] = ['label' => $v->date_stoking,  'y' => $v->harga_pcs];
 }
+
 $this->db->select('*');
 $this->db->where('id_barang', '412');
-$dataProdukChart = $this->db->get("ambilbarang")->result();
+$dataProdukChart = $this->db->get("stokingbarang")->result();
 foreach ($dataProdukChart as $k => $v) {
-    $arrProd11[] = ['label' => $v->date_ambil,  'y' => $v->jumlah_ambil];
+    $arrProd11[] = ['label' => $v->date_stoking,  'y' => $v->harga_pcs];
 }
-?>
 
-<?php
 $this->db->select('*');
 $this->db->where('id_barang', '511');
-$dataProdukChart = $this->db->get("ambilbarang")->result();
+$dataProdukChart = $this->db->get("stokingbarang")->result();
 foreach ($dataProdukChart as $k => $v) {
-    $arrProd12[] = ['label' => $v->date_ambil,  'y' => $v->jumlah_ambil];
+    $arrProd12[] = ['label' => $v->date_stoking,  'y' => $v->harga_pcs];
 }
 
-// $this->db->select('*');
-// $this->db->where('id_barang', '512');
-// $dataProdukChart = $this->db->get("ambilbarang")->result();
-// foreach ($dataProdukChart as $k => $v) {
-//     $arrProd13[] = ['label' => $v->date_ambil,  'y' => $v->jumlah_ambil];
-// }
 ?>
 
 </head>
@@ -228,12 +215,12 @@ foreach ($dataProdukChart as $k => $v) {
                         theme: "light2",
                         animationEnabled: true,
                         title: {
-                            text: "Data pengambilan barang"
+                            text: "Data harga barang"
                         },
                         axisY: {
                             includeZero: false,
-                            title: "Jumlah barang/Pcs",
-                            suffix: ""
+                            title: "Harga barang (Rupiah)",
+                            prefix: "Rp."
                         },
                         toolTip: {
                             shared: "true"
@@ -243,7 +230,7 @@ foreach ($dataProdukChart as $k => $v) {
                             itemclick: toggleDataSeries
                         },
                         data: [{
-                                type: "spline",
+                                type: "area",
                                 visible: true,
                                 showInLegend: true,
                                 yValueFormatString: "",
@@ -252,7 +239,7 @@ foreach ($dataProdukChart as $k => $v) {
                             },
 
                             {
-                                type: "spline",
+                                type: "area",
                                 visible: false,
                                 showInLegend: true,
                                 yValueFormatString: "",
@@ -261,7 +248,7 @@ foreach ($dataProdukChart as $k => $v) {
                             },
 
                             {
-                                type: "spline",
+                                type: "area",
                                 visible: false,
                                 showInLegend: true,
                                 yValueFormatString: "",
@@ -270,7 +257,7 @@ foreach ($dataProdukChart as $k => $v) {
                             },
 
                             {
-                                type: "spline",
+                                type: "area",
                                 visible: false,
                                 showInLegend: true,
                                 yValueFormatString: "",
@@ -279,7 +266,7 @@ foreach ($dataProdukChart as $k => $v) {
                             },
 
                             {
-                                type: "spline",
+                                type: "area",
                                 visible: false,
                                 showInLegend: true,
                                 yValueFormatString: "",
@@ -288,7 +275,7 @@ foreach ($dataProdukChart as $k => $v) {
                             },
 
                             {
-                                type: "spline",
+                                type: "area",
                                 visible: false,
                                 showInLegend: true,
                                 yValueFormatString: "",
@@ -297,7 +284,7 @@ foreach ($dataProdukChart as $k => $v) {
                             },
 
                             {
-                                type: "spline",
+                                type: "area",
                                 visible: false,
                                 showInLegend: true,
                                 yValueFormatString: "",
@@ -306,7 +293,7 @@ foreach ($dataProdukChart as $k => $v) {
                             },
 
                             {
-                                type: "spline",
+                                type: "area",
                                 visible: false,
                                 showInLegend: true,
                                 yValueFormatString: "",
@@ -315,7 +302,7 @@ foreach ($dataProdukChart as $k => $v) {
                             },
 
                             {
-                                type: "spline",
+                                type: "area",
                                 visible: false,
                                 showInLegend: true,
                                 yValueFormatString: "",
@@ -324,7 +311,7 @@ foreach ($dataProdukChart as $k => $v) {
                             },
 
                             {
-                                type: "spline",
+                                type: "area",
                                 visible: false,
                                 showInLegend: true,
                                 yValueFormatString: "",
@@ -333,7 +320,7 @@ foreach ($dataProdukChart as $k => $v) {
                             },
 
                             {
-                                type: "spline",
+                                type: "area",
                                 visible: false,
                                 showInLegend: true,
                                 yValueFormatString: "",
@@ -342,22 +329,13 @@ foreach ($dataProdukChart as $k => $v) {
                             },
 
                             {
-                                type: "spline",
+                                type: "area",
                                 visible: false,
                                 showInLegend: true,
                                 yValueFormatString: "",
                                 name: "Kopi bubuk",
                                 dataPoints: <?= json_encode($arrProd12, JSON_NUMERIC_CHECK); ?>
                             },
-
-                            // {
-                            //     type: "spline",
-                            //     visible: false,
-                            //     showInLegend: true,
-                            //     yValueFormatString: "",
-                            //     name: "Teh celup",
-                            // dataPoints: 
-                            // }
 
                         ]
                     });
@@ -382,5 +360,6 @@ foreach ($dataProdukChart as $k => $v) {
         </body>
         <br>
         <div class="container">
-            <a href="<?= base_url('manajer/lihat_barang_keluar') ?>" class="btn btn-info" role="button" class="btn btn-primary">Tabel pengambilan barang</a>
+            <a href="<?= base_url('manajer/lihat_barang_masuk') ?>" class="btn btn-info" role="button" class="btn btn-primary">Tabel barang masuk</a>
+            <a href="<?= base_url('data_visual/graph_stok_barang') ?>" class="btn btn-primary" role="button">Grafik barang masuk</a>
         </div>

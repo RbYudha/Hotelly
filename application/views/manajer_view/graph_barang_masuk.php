@@ -252,7 +252,7 @@ foreach ($dataProdukChart as $k => $v) {
                                 visible: false,
                                 showInLegend: true,
                                 yValueFormatString: "",
-                                name: "Ballpoint",
+                                name: "Handuk",
                                 dataPoints: <?= json_encode($arrProd3, JSON_NUMERIC_CHECK); ?>
                             },
 
@@ -360,5 +360,6 @@ foreach ($dataProdukChart as $k => $v) {
         </body>
         <br>
         <div class="container">
-            <a href="<?= base_url('manajer/lihat_barang_masuk') ?>" class="btn btn-info" role="button" class="btn btn-primary">Tabel barang masuk</a>
+            <a href="<?= base_url('manajer/lihat_barang_masuk') ?>" class="btn btn-info" role="button">Tabel barang masuk</a>
+            <a href="<?= base_url('data_visual/graph_harga_barang') ?>" class="btn btn-primary" role="button">Grafik harga barang</a>
         </div>

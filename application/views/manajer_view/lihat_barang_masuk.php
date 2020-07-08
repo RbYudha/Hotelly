@@ -163,7 +163,8 @@
             </table>
             <br>
             <div class="container">
-                <a href="<?= base_url('data_visual/graph_stok_barang') ?>" class="btn btn-info" role="button" class="btn btn-primary">Grafik barang masuk</a>
+                <a href="<?= base_url('data_visual/graph_stok_barang') ?>" class="btn btn-info" role="button">Grafik barang masuk</a>
+                <a href="<?= base_url('data_visual/graph_harga_barang') ?>" class="btn btn-primary" role="button">Grafik harga barang</a>
             </div>
             <br>
         </div>

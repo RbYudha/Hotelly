@@ -7,6 +7,7 @@ class Employee extends CI_Controller
     {
         parent::__construct();
         $this->load->library('form_validation');
+        $this->load->model('data_tabel');
     }
 
     public function index()
@@ -158,5 +159,18 @@ class Employee extends CI_Controller
         $this->session->set_flashdata('messageSuc', '<div class="alert alert-success" role="alert">
         Barang hilang berhasil dilaporkan!</div>');
         redirect('employee');
+    }
+
+    public function lihat_tabel_barang()
+    {
+        $data['employee'] = $this->db->get_where('employee', ['email_employee' =>
+        $this->session->userdata('email_employee')])->row_array();
+
+        $data1['hasil'] = $this->data_tabel->tampil_barang();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('probis/tabel_barang', $data1);
     }
 }

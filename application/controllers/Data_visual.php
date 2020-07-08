@@ -33,6 +33,15 @@ class Data_visual extends CI_Controller
         $this->load->view('manajer_view/graph_barang_masuk');
     }
 
+    function graph_harga_barang()
+    {
+        $data['employee'] = $this->db->get_where('employee', ['email_employee' =>
+        $this->session->userdata('email_employee')])->row_array();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('manajer_view/graph_harga_barang');
+    }
+
     function graph_ambil_barang()
     {
         $data['employee'] = $this->db->get_where('employee', ['email_employee' =>

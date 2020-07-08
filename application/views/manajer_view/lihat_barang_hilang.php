@@ -160,7 +160,7 @@
             </table>
             <br>
             <div class="container">
-                <a href="<?= base_url('data_visual/graph_barang_hilang') ?>" class="btn btn-info" role="button" class="btn btn-primary">Grafik barang hilang</a>
+                <a href="<?= base_url('data_visual/graph_barang_hilang') ?>" class="btn btn-info" role="button" class="btn btn-info">Grafik barang hilang</a>
                 <a href="<?= base_url('data_visual/graph_barang_hilang2') ?>" class="btn btn-primary" role="button" class="btn btn-primary">PieChart barang hilang berdasarkan kategori kamar</a>
             </div>
             <br>
