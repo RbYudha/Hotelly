@@ -140,10 +140,10 @@
                                 <tr>
                                     <th>No</th>
                                     <th>ID</th>
-                                    <th>Nama</th>
+                                    <th>Name</th>
                                     <th>Email</th>
                                     <th>Role</th>
-                                    <th>Tanggal</th>
+                                    <th>Date created</th>
                                     <th>Opsi</th>
                                 </tr>
                             </thead>
