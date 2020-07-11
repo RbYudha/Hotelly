@@ -1,49 +1,80 @@
-<!-- Modal untuk tambah data kategori_kamar -->
-<div class="modal fade" id="tambahkategori_kamar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal untuk tambah data orderstok -->
+<div class="modal fade" id="tambahorderstok" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah kategori_kamar</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Tambah orderstok</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form id="formtambahdatakategori_kamar">
+                <form id="formtambahdataorderstok">
                     <div class="form-group row">
-                        <label for="inputnama" class="col-sm-2 col-form-label">ID</label>
+                        <label for="pegawai" class="col-sm-2 col-form-label">Karyawan</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="idkamar" placeholder="ID kategori Kamar">
+                            <!-- <input type="text" class="form-control" id="id1" placeholder="id karyawan"> -->
+                            <select class="form-control" id="id1">
+                                <?php
+                                foreach ($datakaryawan->result() as $karyawan) {
+                                    echo "<option value=" . $karyawan->id_employee . ">" . $karyawan->id_employee . '-' . $karyawan->name_employee . "</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="barang" class="col-sm-2 col-form-label">barang</label>
+                        <div class="col-sm-10">
+                            <!-- <input type="text" class="form-control" id="id2" placeholder="id barang"> -->
+                            <select class="form-control" id="id2">
+                                <?php
+                                foreach ($databarang->result() as $barang) {
+                                    echo "<option value=" . $barang->id_barang . ">" . $barang->id_barang . '-' . $barang->nama_barang . "</option>";
+                                }
+                                ?>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputPassword" class="col-sm-2 col-form-label">Kategori</label>
+                        <label for="inputjumlah" class="col-sm-2 col-form-label">Jumlah</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="namakategori" placeholder="Nama kategori kamar">
+                            <input type="text" class="form-control" id="jumlahorder" placeholder="jumlah order">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="inputdate" class="col-sm-2 col-form-label">Date order</label>
+                        <div class="col-sm-10">
+                            <?php
+                            $tDate = date('y-m-d');
+                            ?>
+                            <input type="text" class="form-control" id="date" placeholder="Tanggal order stok" value="<?= $tDate ?>">
                         </div>
                     </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                <button type="submit" class="btn btn-primary">Tambah Data kategori kamar</button>
+                <button type="submit" class="btn btn-primary">Tambah Data orderstok</button>
             </div>
             </form>
         </div>
     </div>
 </div>
 
-<!-- Modal untuk edit data kategori_kamar -->
-<div class="modal fade" id="editkategori_kamar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal untuk edit data orderstok -->
+<div class="modal fade" id="editorderstok" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Data kategori_kamar</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Edit Data orderstok</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <div id="formdatakategori_kamar">
+                <div id="formdataorderstok">
 
                 </div>
             </div>
@@ -52,23 +83,26 @@
 
     <script>
         $(document).ready(function() {
-            // ini adalah fungsi untuk mengambil data kategori_kamar dan di  incluce ke dalam datatable
-            var datakategori_kamar = $('#datakategori_kamar').DataTable({
+            // ini adalah fungsi untuk mengambil data orderstok dan di  incluce ke dalam datatable
+            var dataorderstok = $('#dataorderstok').DataTable({
                 "processing": true,
-                "ajax": "<?= base_url("manajer_job/datakategori_kamar") ?>",
+                "ajax": "<?= base_url("manajer_job/dataorderstok") ?>",
                 stateSave: true,
                 "order": []
             })
 
+
             // fungsi untuk menambah data  
-            // pilih selector dari yang id formtambahdatakategori_kamar  
-            $('#formtambahdatakategori_kamar').on('submit', function() {
-                var idkamar = $('#idkamar').val(); // diambil dari id nama yang ada diform modal
-                var namakategori = $('#namakategori').val(); // diambil dari id alamat yanag ada di form modal 
+            // pilih selector dari yang id formtambahdataorderstok
+            $('#formtambahdataorderstok').on('submit', function() {
+                var idpegawai = $('#id1').val();
+                var idbarang = $('#id2').val();
+                var jumlahorder = $('#jumlahorder').val();
+                var date = $('#date').val();
 
                 $.ajax({
                     type: "post",
-                    url: "<?= base_url('manajer_job/tambahkategori_kamar') ?>",
+                    url: "<?= base_url('manajer_job/tambahorderstok') ?>",
                     beforeSend: function() {
                         swal({
                             title: 'Menunggu',
@@ -79,34 +113,41 @@
                         })
                     },
                     data: {
-                        idkamar: idkamar,
-                        namakategori: namakategori
+                        //nama_orderstok: nama_orderstok,
+                        idpegawai: idpegawai,
+                        idbarang: idbarang,
+                        jumlahorder: jumlahorder,
+                        date: date
                     }, // ambil datanya dari form yang ada di variabel
                     dataType: "JSON",
                     success: function(data) {
-                        datakategori_kamar.ajax.reload(null, false);
+                        dataorderstok.ajax.reload(null, false);
                         swal({
                             type: 'success',
-                            title: 'Tambah kategori_kamar',
-                            text: 'Anda Berhasil Menambah kategori_kamar'
+                            title: 'Tambah orderstok',
+                            text: 'Anda Berhasil Menambah orderstok'
                         })
                         // bersihkan form pada modal
-                        $('#tambahkategori_kamar').modal('hide');
+                        $('#tambahorderstok').modal('hide');
                         // tutup modal
-                        $('#idkamar').val('');
-                        $('#namakategori').val('');
-
+                        $('#idpegawai').val('');
+                        $('#idbarang').val('');
+                        $('#jumlahorder').val('');
+                        $('#date').val('');
+                        //$('#nama_orderstok').val('');
                     }
                 })
                 return false;
             });
-            $('#datakategori_kamar').on('click', '.ubah-kategori_kamar', function() {
+
+
+            $('#dataorderstok').on('click', '.ubah-orderstok', function() {
                 // ambil element id pada saat klik ubah
                 var id = $(this).data('id');
 
                 $.ajax({
                     type: "post",
-                    url: "<?= base_url('manajer_job/formeditkategori_kamar') ?>",
+                    url: "<?= base_url('manajer_job/formedit_orderstok') ?>",
                     beforeSend: function() {
                         swal({
                             title: 'Menunggu',
@@ -121,18 +162,20 @@
                     },
                     success: function(data) {
                         swal.close();
-                        $('#editkategori_kamar').modal('show');
-                        $('#formdatakategori_kamar').html(data);
+                        $('#editorderstok').modal('show');
+                        $('#formdataorderstok').html(data);
 
                         // proses untuk mengubah data
-                        $('#formubahdatakategori_kamar').on('submit', function() {
-                            var editid = $('#editid').val();
-                            var editnama_kategori = $('#editnama_kategori').val();
-                            var id = $('#id_kategori_kamar').val();
+                        $('#formubahdataorderstok').on('submit', function() {
+                            var editid1 = $('#edit_id1').val();
+                            var editid2 = $('#edit_id2').val();
+                            var editjumlah = $('#edit_jumlah').val();
+                            var editdate = $('#edit_dateorder').val();
+                            var id = $('#idorder').val();
 
                             $.ajax({
                                 type: "post",
-                                url: "<?= base_url('manajer_job/ubahkategori_kamar') ?>",
+                                url: "<?= base_url('manajer_job/ubahorderstok') ?>",
                                 beforeSend: function() {
                                     swal({
                                         title: 'Menunggu',
@@ -143,21 +186,22 @@
                                     })
                                 },
                                 data: {
-                                    editid: editid,
-                                    editnama_kategori: editnama_kategori,
-                                    id: id,
-
+                                    editid1: editid1,
+                                    editid2: editid2,
+                                    editjumlah: editjumlah,
+                                    editdate: editdate,
+                                    id: id
                                 }, // ambil datanya dari form yang ada di variabel
 
                                 success: function(data) {
-                                    datakategori_kamar.ajax.reload(null, false);
+                                    dataorderstok.ajax.reload(null, false);
                                     swal({
                                         type: 'success',
-                                        title: 'Update kategori_kamar',
-                                        text: 'Anda Berhasil Mengubah Data kategori_kamar'
+                                        title: 'Update orderstok',
+                                        text: 'Anda Berhasil Mengubah Data orderstok'
                                     })
                                     // bersihkan form pada modal
-                                    $('#editkategori_kamar').modal('hide');
+                                    $('#editorderstok').modal('hide');
                                 }
                             })
                             return false;
@@ -165,9 +209,10 @@
                     }
                 });
             });
+
             // fungsi untuk hapus data
-            //pilih selector dari table id datamahasiswa dengan class .hapus-mahasiswa
-            $('#datakategori_kamar').on('click', '.hapus-kategori_kamar', function() {
+            //pilih selector dari table id dataorderstok dengan class .hapus-orderstok
+            $('#dataorderstok').on('click', '.hapus-orderstok', function() {
                 var id = $(this).data('id');
                 swal({
                     title: 'Konfirmasi',
@@ -182,7 +227,7 @@
                 }).then((result) => {
                     if (result.value) {
                         $.ajax({
-                            url: "<?= base_url('manajer_job/hapuskategori_kamar') ?>",
+                            url: "<?= base_url('manajer_job/hapus_orderstok') ?>",
                             method: "post",
                             beforeSend: function() {
                                 swal({
@@ -202,7 +247,7 @@
                                     'Berhasil Terhapus',
                                     'success'
                                 )
-                                datakategori_kamar.ajax.reload(null, false)
+                                dataorderstok.ajax.reload(null, false)
                             }
                         })
                     } else if (result.dismiss === swal.DismissReason.cancel) {

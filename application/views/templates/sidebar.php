@@ -59,7 +59,7 @@
     <li class="nav-item">
         <a class="nav-link" href=<?= base_url('employee/lihat_tabel_barang') ?>>
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>List Barang</span></a>
+            <span>List Total Barang</span></a>
     </li>
 
     <!-- Sidebar Toggler (Sidebar)

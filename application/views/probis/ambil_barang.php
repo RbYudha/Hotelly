@@ -16,7 +16,7 @@
     <div class="card mb-3" style="max-width: 720px;">
         <div class="card-body">
             <div class="text-center">
-                <h1 class="h3 text-gray-900 mb-4">Ambil Barang</h1>
+                <h1 class="h3 text-gray-900 mb-4">Ambil Barang dari Storage</h1>
             </div>
             <!-- form -->
             <form class="user" method="post" action="<?= base_url('employee/ambil_barang1'); ?>">

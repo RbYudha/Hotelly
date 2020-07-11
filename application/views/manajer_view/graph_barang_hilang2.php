@@ -72,6 +72,11 @@ foreach ($dataProdukChart as $k => $v) {
             <span>Data Karyawan</span></a>
     </li>
     <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('manajer_job/order_stok') ?>">
+            <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            <span>List Order</span></a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" href="<?= base_url('manajer_job/lihat_list_kategori') ?>">
             <i class="fa fa-list" aria-hidden="true"></i>
             <span>List Kategori Barang</span></a>

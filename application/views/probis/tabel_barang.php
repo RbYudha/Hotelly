@@ -2,7 +2,7 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-4 text-gray-800">Data Barang Masuk</h1>
+            <h1 class="h3 mb-4 text-gray-800">Data total barang pada storage</h1>
 
             <?php?>
             <table class="table table-striped" id="tabel-data">

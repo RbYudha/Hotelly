@@ -18,6 +18,23 @@ class Manajer extends CI_Controller
         $data['employee'] = $this->db->get_where('employee', ['email_employee' =>
         $this->session->userdata('email_employee')])->row_array();
 
+        $data['barang1'] = $this->db->get_where('barang', ['id_barang' => 111])->row_array();
+        $data['barang2'] = $this->db->get_where('barang', ['id_barang' => 112])->row_array();
+        $data['barang3'] = $this->db->get_where('barang', ['id_barang' => 113])->row_array();
+        $data['barang4'] = $this->db->get_where('barang', ['id_barang' => 211])->row_array();
+        $data['barang5'] = $this->db->get_where('barang', ['id_barang' => 212])->row_array();
+        $data['barang6'] = $this->db->get_where('barang', ['id_barang' => 213])->row_array();
+        $data['barang7'] = $this->db->get_where('barang', ['id_barang' => 214])->row_array();
+        $data['barang8'] = $this->db->get_where('barang', ['id_barang' => 311])->row_array();
+        $data['barang9'] = $this->db->get_where('barang', ['id_barang' => 312])->row_array();
+
+        $data['barang10'] = $this->db->get_where('barang', ['id_barang' => 411])->row_array();
+        $data['barang11'] = $this->db->get_where('barang', ['id_barang' => 412])->row_array();
+        $data['barang12'] = $this->db->get_where('barang', ['id_barang' => 511])->row_array();
+
+        //$data['databarang'] = $this->Dropdown->tampil_data_barang_hbs();
+        //$data['barang1'] = $this->Dropdown->barang1();
+
         $this->load->view('templates/header', $data);
         $this->load->view('user/manajer', $data);
         $this->load->view('templates/footer');

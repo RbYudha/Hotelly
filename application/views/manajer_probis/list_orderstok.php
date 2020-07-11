@@ -118,62 +118,52 @@
                 </li>
 
             </ul>
-
         </nav>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
 
-            <!-- Page Heading -->
-            <h1 class="h3 mb-4 text-gray-800">Data Barang Masuk</h1>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.1/sweetalert2.css">
+        </head>
 
-            <?php?>
-            <table class="table table-striped" id="tabel-data">
-                <thead>
-                    <tr>
-                        <th>Stok ID</th>
-                        <th>Pegawai</th>
-                        <th>Nama</th>
-                        <th>Jumlah</th>
-                        <th>Harga/Pcs</th>
-                        <th>Transaksi pembelian</th>
-                        <th>Tanggal Masuk</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    foreach ($hasil as $item) {
-                    ?>
-                        <tr>
-                            <td><?php echo $item->id_stoking; ?></td>
-                            <td><?php echo $item->name_employee; ?></td>
-                            <td><?php echo $item->nama_barang; ?></td>
-                            <td><?php echo $item->stok_barang; ?></td>
-                            <td>Rp.<?php echo $item->harga_pcs; ?></td>
-                            <td>Rp.<?php echo $item->transaksi; ?></td>
-                            <td><?php echo $item->date_stoking; ?></td>
-                        </tr>
-                    <?php
-                    }
-                    ?>
-                </tbody>
+        <body>
 
-                <script>
-                    $(document).ready(function() {
-                        $('#tabel-data').DataTable();
-                    });
-                </script>
-
-            </table>
-            <br>
             <div class="container">
-                <a href="<?= base_url('data_visual/graph_stok_barang') ?>" class="btn btn-info" role="button">Grafik barang masuk</a>
-                <a href="<?= base_url('data_visual/graph_harga_barang') ?>" class="btn btn-primary" role="button">Grafik harga barang</a>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#tambahorderstok">Tambah Order</button>
+                        <h1 class="h3 mb-4 text-gray-800">List Perintah Stok Ulang Barang</h1>
+                        <hr>
+                        <table class="table table-striped" align="center" id="dataorderstok">
+                            <thead align="center">
+                                <tr>
+                                    <th>No Order</th>
+                                    <th>Karyawan</th>
+                                    <th>Barang</th>
+                                    <th>Jumlah</th>
+                                    <th>Date</th>
+                                    <th>Opsi</th>
+                                </tr>
+                            </thead>
+                            <tbody align="center">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-            <br>
-        </div>
-        <!-- /.container-fluid -->
+        </body>
+        <br>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.1/sweetalert2.all.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
-    </div>
-    <!-- End of Main Content -->
+
+        <!-- End of Main Content -->

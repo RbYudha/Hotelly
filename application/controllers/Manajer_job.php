@@ -285,7 +285,6 @@ class Manajer_job extends CI_Controller
 
     public function tambahkategori_kamar()
     {
-        // didapat dari ajax yang dimana data{nama:nama,alamat:alamat}
         $id = $this->input->post('idkamar');
         $ktg_kmr = $this->input->post('namakategori');
 
@@ -339,5 +338,98 @@ class Manajer_job extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('manajer_probis/list_kategori_kamar');
         $this->load->view('manajer_probis/ajaxcrud_kategori_kamar');
+    }
+
+    public function dataorderstok()
+    {
+        $dataorderstok = $this->dataorderstok_model->getdataorder();
+        foreach ($dataorderstok as  $value) {
+            $tbody = array();
+            $tbody[] = $value['id_order'];
+            $tbody[] = $value['name_employee'];
+            $tbody[] = $value['nama_barang'];
+            $tbody[] = $value['jumlah_order'];
+            $tbody[] = $value['date_order'];
+            $aksi = "<button class='btn btn-success ubah-orderstok' id='id_orderstok' data-toggle='modal' data-id=" . $value['id_order'] . ">Edit</button>"
+                . ' ' . "<button class='btn btn-danger hapus-orderstok' id='id_orderstok' data-toggle='modal' data-id=" . $value['id_order'] . ">Delete</button>";
+            $tbody[] = $aksi;
+            $data[] = $tbody;
+        }
+
+        if ($dataorderstok) {
+            echo json_encode(array('data' => $data));
+        } else {
+            echo json_encode(array('data' => 0));
+        }
+    }
+
+    public function tambahorderstok()
+    {
+        $idpegawai = $this->input->post('idpegawai');
+        $idbarang = $this->input->post('idbarang');
+        $jumlah = $this->input->post('jumlahorder');
+        $date = $this->input->post('date');
+
+        $tambahorder = array(
+            'id_employee' => $idpegawai,
+            'id_barang'   => $idbarang,
+            'jumlah_order' => $jumlah,
+            'date_order' => $date
+        );
+
+        $data = $this->dataorderstok_model->insertorder($tambahorder);
+
+        echo json_encode($data);
+    }
+
+    public function formedit_orderstok()
+    {
+        // id yang telah diparsing pada ajax ajaxcrud.php data{id:id}
+        $id = $this->input->post('id');
+
+        $data['dataperorderstok'] = $this->dataorderstok_model->dataorder_edit($id);
+        $data['datakaryawan'] = $this->Dropdown->tampil_data_karyawan();
+        $data['databarang'] = $this->Dropdown->tampil_data_barang_hbs();
+
+        $this->load->view('manajer_probis/formeditorderstok', $data);
+    }
+
+    public function ubahorderstok()
+    {
+        $objdata = array(
+            'id_employee' => $this->input->post('editid1'),
+            'id_barang' => $this->input->post('editid2'),
+            'jumlah_order' => $this->input->post('editjumlah'),
+            'date_order' => $this->input->post('editdate'),
+        );
+
+        $id = $this->input->post('id');
+        $data = $this->dataorderstok_model->ubahorder($objdata, $id);
+
+        echo json_encode($data);
+    }
+
+    public function hapus_orderstok()
+    {
+        // id yang telah diparsing pada ajax ajaxcrud.php data{id:id}
+        $id = $this->input->post('id');
+
+        $data = $this->dataorderstok_model->hapusdataorder($id);
+        echo json_encode($data);
+    }
+
+
+    public function order_stok()
+    {
+        //kirimm data ke view
+        $data['employee'] = $this->db->get_where('employee', ['email_employee' =>
+        $this->session->userdata('email_employee')])->row_array();
+
+        $data1['datakaryawan'] = $this->Dropdown->tampil_data_karyawan();
+        $data1['databarang'] = $this->Dropdown->tampil_data_barang_hbs();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('manajer_probis/list_orderstok', $data1);
+        $this->load->view('manajer_probis/ajaxcrud_orderstok', $data1);
     }
 }
