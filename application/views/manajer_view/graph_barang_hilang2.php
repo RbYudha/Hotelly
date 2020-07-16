@@ -20,7 +20,7 @@ foreach ($dataProdukChart as $k => $v) {
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('manajer/index') ?>">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-hotel"></i>
         </div>
@@ -71,11 +71,11 @@ foreach ($dataProdukChart as $k => $v) {
             <i class="fa fa-users" aria-hidden="true"></i>
             <span>Data Karyawan</span></a>
     </li>
-    <li class="nav-item">
+    <!-- <li class="nav-item">
         <a class="nav-link" href="<?= base_url('manajer_job/order_stok') ?>">
             <i class="fa fa-shopping-bag" aria-hidden="true"></i>
             <span>List Order</span></a>
-    </li>
+    </li> -->
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('manajer_job/lihat_list_kategori') ?>">
             <i class="fa fa-list" aria-hidden="true"></i>

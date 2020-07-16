@@ -11,6 +11,7 @@ class Dropdown extends CI_Model
 
     function tampil_data_barang()
     {
+        $this->db->order_by('id_barang', 'DESC');
         $query = $this->db->get('barang');
         return $query;
     }

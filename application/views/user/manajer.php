@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('manajer/index') ?>">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-hotel"></i>
         </div>
@@ -53,14 +53,6 @@
             <i class="fa fa-users" aria-hidden="true"></i>
             <span>Data Karyawan</span></a>
     </li>
-
-    <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('manajer_job/order_stok') ?>">
-            <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-            <span>List Order</span></a>
-    </li>
-
-
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('manajer_job/lihat_list_kategori') ?>">
             <i class="fa fa-list" aria-hidden="true"></i>
@@ -125,8 +117,6 @@
         </nav>
         <!-- End of Topbar -->
 
-        <!-- get data from DB -->
-
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
@@ -160,16 +150,16 @@
                     Swal.fire({
                         type: 'info',
                         title: 'Stok barang dalam keadaan stabil',
-                        text: 'tidak perlu stok ulang',
+                        text: 'tidak perlu check stok',
                     });
                 } else {
 
                     if (b111 < 100) {
                         Swal.fire({
                             type: 'warning',
-                            title: 'Mohon segera stok ulang <?= $barang1['nama_barang'] ?>',
-                            text: 'Total <?= $barang1['nama_barang'] ?> : <?= $barang1['stok'] ?>',
-                            confirmButtonText: '<a id="link" href = "<?= base_url('manajer_job/order_stok') ?>">Restok</a>',
+                            title: 'Mohon segera check stok \n <?= $barang1['nama_barang'] ?>',
+                            text: 'Total <?= $barang1['nama_barang'] ?> pada storage : <?= $barang1['stok'] ?>',
+                            confirmButtonText: '<a id="link" href = "<?= base_url('manajer/lihat_barang') ?>">Check </a>',
                             showCancelButton: true,
                             cancelButtonColor: '#d33',
                             cancelButtonText: 'Later'
@@ -179,9 +169,9 @@
                     if (b112 < 100) {
                         Swal.fire({
                             type: 'warning',
-                            title: 'Mohon segera stok ulang <?= $barang2['nama_barang'] ?>',
-                            text: 'Total <?= $barang2['nama_barang'] ?> : <?= $barang2['stok'] ?>',
-                            confirmButtonText: '<a id="link" href = "<?= base_url('manajer_job/order_stok') ?>">Restok</a>',
+                            title: 'Mohon segera check stok \n <?= $barang2['nama_barang'] ?>',
+                            text: 'Total <?= $barang2['nama_barang'] ?> pada storage : <?= $barang2['stok'] ?>',
+                            confirmButtonText: '<a id="link" href = "<?= base_url('manajer/lihat_barang') ?>">Check </a>',
                             showCancelButton: true,
                             cancelButtonColor: '#d33',
                             cancelButtonText: 'Later'
@@ -191,9 +181,9 @@
                     if (b113 < 100) {
                         Swal.fire({
                             type: 'warning',
-                            title: 'Mohon segera stok ulang <?= $barang3['nama_barang'] ?>',
-                            text: 'Total <?= $barang3['nama_barang'] ?> : <?= $barang3['stok'] ?>',
-                            confirmButtonText: '<a id="link" href = "<?= base_url('manajer_job/order_stok') ?>">Restok</a>',
+                            title: 'Mohon segera check stok \n <?= $barang3['nama_barang'] ?>',
+                            text: 'Total <?= $barang3['nama_barang'] ?> pada storage : <?= $barang3['stok'] ?>',
+                            confirmButtonText: '<a id="link" href = "<?= base_url('manajer/lihat_barang') ?>">Check </a>',
                             showCancelButton: true,
                             cancelButtonColor: '#d33',
                             cancelButtonText: 'Later'
@@ -203,9 +193,9 @@
                     if (b211 < 100) {
                         Swal.fire({
                             type: 'warning',
-                            title: 'Mohon segera stok ulang <?= $barang4['nama_barang'] ?>',
-                            text: 'Total <?= $barang4['nama_barang'] ?> : <?= $barang4['stok'] ?>',
-                            confirmButtonText: '<a id="link" href = "<?= base_url('manajer_job/order_stok') ?>">Restok</a>',
+                            title: 'Mohon segera check stok \n <?= $barang4['nama_barang'] ?>',
+                            text: 'Total <?= $barang4['nama_barang'] ?> pada storage : <?= $barang4['stok'] ?>',
+                            confirmButtonText: '<a id="link" href = "<?= base_url('manajer/lihat_barang') ?>">Check </a>',
                             showCancelButton: true,
                             cancelButtonColor: '#d33',
                             cancelButtonText: 'Later'
@@ -216,9 +206,9 @@
                     if (b212 < 100) {
                         Swal.fire({
                             type: 'warning',
-                            title: 'Mohon segera stok ulang <?= $barang5['nama_barang'] ?>',
-                            text: 'Total <?= $barang5['nama_barang'] ?> : <?= $barang5['stok'] ?>',
-                            confirmButtonText: '<a id="link" href = "<?= base_url('manajer_job/order_stok') ?>">Restok</a>',
+                            title: 'Mohon segera check stok \n <?= $barang5['nama_barang'] ?>',
+                            text: 'Total <?= $barang5['nama_barang'] ?> pada storage : <?= $barang5['stok'] ?>',
+                            confirmButtonText: '<a id="link" href = "<?= base_url('manajer/lihat_barang') ?>">Check </a>',
                             showCancelButton: true,
                             cancelButtonColor: '#d33',
                             cancelButtonText: 'Later'
@@ -229,9 +219,9 @@
                     if (b213 < 100) {
                         Swal.fire({
                             type: 'warning',
-                            title: 'Mohon segera stok ulang <?= $barang6['nama_barang'] ?>',
-                            text: 'Total <?= $barang6['nama_barang'] ?> : <?= $barang6['stok'] ?>',
-                            confirmButtonText: '<a id="link" href = "<?= base_url('manajer_job/order_stok') ?>">Restok</a>',
+                            title: 'Mohon segera check stok \n <?= $barang6['nama_barang'] ?>',
+                            text: 'Total <?= $barang6['nama_barang'] ?> pada storage : <?= $barang6['stok'] ?>',
+                            confirmButtonText: '<a id="link" href = "<?= base_url('manajer/lihat_barang') ?>">Check </a>',
                             showCancelButton: true,
                             cancelButtonColor: '#d33',
                             cancelButtonText: 'Later'
@@ -242,9 +232,9 @@
                     if (b214 < 100) {
                         Swal.fire({
                             type: 'warning',
-                            title: 'Mohon segera stok ulang <?= $barang7['nama_barang'] ?>',
-                            text: 'Total <?= $barang7['nama_barang'] ?> : <?= $barang7['stok'] ?>',
-                            confirmButtonText: '<a id="link" href = "<?= base_url('manajer_job/order_stok') ?>">Restok</a>',
+                            title: 'Mohon segera check stok \n <?= $barang7['nama_barang'] ?>',
+                            text: 'Total <?= $barang7['nama_barang'] ?> pada storage : <?= $barang7['stok'] ?>',
+                            confirmButtonText: '<a id="link" href = "<?= base_url('manajer/lihat_barang') ?>">Check </a>',
                             showCancelButton: true,
                             cancelButtonColor: '#d33',
                             cancelButtonText: 'Later'
@@ -255,9 +245,9 @@
                     if (b311 < 100) {
                         Swal.fire({
                             type: 'warning',
-                            title: 'Mohon segera stok ulang <?= $barang8['nama_barang'] ?>',
-                            text: 'Total <?= $barang8['nama_barang'] ?> : <?= $barang8['stok'] ?>',
-                            confirmButtonText: '<a id="link" href = "<?= base_url('manajer_job/order_stok') ?>">Restok</a>',
+                            title: 'Mohon segera check stok \n <?= $barang8['nama_barang'] ?>',
+                            text: 'Total <?= $barang8['nama_barang'] ?> pada storage : <?= $barang8['stok'] ?>',
+                            confirmButtonText: '<a id="link" href = "<?= base_url('manajer/lihat_barang') ?>">Check </a>',
                             showCancelButton: true,
                             cancelButtonColor: '#d33',
                             cancelButtonText: 'Later'
@@ -268,59 +258,53 @@
                     if (b312 < 100) {
                         Swal.fire({
                             type: 'warning',
-                            title: 'Mohon segera stok ulang <?= $barang9['nama_barang'] ?>',
-                            text: 'Total <?= $barang9['nama_barang'] ?> : <?= $barang9['stok'] ?>',
-                            confirmButtonText: '<a id="link" href = "<?= base_url('manajer_job/order_stok') ?>">Restok</a>',
+                            title: 'Mohon segera check stok \n <?= $barang9['nama_barang'] ?>',
+                            text: 'Total <?= $barang9['nama_barang'] ?> pada storage : <?= $barang9['stok'] ?>',
+                            confirmButtonText: '<a id="link" href = "<?= base_url('manajer/lihat_barang') ?>">Check </a>',
                             showCancelButton: true,
                             cancelButtonColor: '#d33',
                             cancelButtonText: 'Later'
 
                         });
                     }
-
                     if (b411 < 100) {
                         Swal.fire({
                             type: 'warning',
-                            title: 'Mohon segera stok ulang <?= $barang10['nama_barang'] ?>',
-                            text: 'Total <?= $barang10['nama_barang'] ?> : <?= $barang10['stok'] ?>',
-                            confirmButtonText: '<a id="link" href = "<?= base_url('manajer_job/order_stok') ?>">Restok</a>',
+                            title: 'Mohon segera check stok \n <?= $barang10['nama_barang'] ?>',
+                            text: 'Total <?= $barang10['nama_barang'] ?> pada storage : <?= $barang10['stok'] ?>',
+                            confirmButtonText: '<a id="link" href = "<?= base_url('manajer/lihat_barang') ?>">Check </a>',
                             showCancelButton: true,
                             cancelButtonColor: '#d33',
                             cancelButtonText: 'Later'
 
                         });
                     }
-
                     if (b412 < 100) {
                         Swal.fire({
                             type: 'warning',
-                            title: 'Mohon segera stok ulang <?= $barang11['nama_barang'] ?>',
-                            text: 'Total <?= $barang11['nama_barang'] ?> : <?= $barang11['stok'] ?>',
-                            confirmButtonText: '<a id="link" href = "<?= base_url('manajer_job/order_stok') ?>">Restok</a>',
+                            title: 'Mohon segera check stok \n <?= $barang11['nama_barang'] ?>',
+                            text: 'Total <?= $barang11['nama_barang'] ?> pada storage : <?= $barang11['stok'] ?>',
+                            confirmButtonText: '<a id="link" href = "<?= base_url('manajer/lihat_barang') ?>">Check </a>',
                             showCancelButton: true,
                             cancelButtonColor: '#d33',
                             cancelButtonText: 'Later'
 
                         });
                     }
-
                     if (b511 < 100) {
                         Swal.fire({
                             type: 'warning',
-                            title: 'Mohon segera stok ulang <?= $barang12['nama_barang'] ?>',
-                            text: 'Total <?= $barang12['nama_barang'] ?> : <?= $barang12['stok'] ?>',
-                            confirmButtonText: '<a id="link" href = "<?= base_url('manajer_job/order_stok') ?>">Restok</a>',
+                            title: 'Mohon segera check stok \n <?= $barang12['nama_barang'] ?>',
+                            text: 'Total <?= $barang12['nama_barang'] ?> pada storage : <?= $barang12['stok'] ?>',
+                            confirmButtonText: '<a id="link" href = "<?= base_url('manajer/lihat_barang') ?>">Check </a>',
                             showCancelButton: true,
                             cancelButtonColor: '#d33',
                             cancelButtonText: 'Later'
 
                         });
                     }
-
-
                 }
             </script>
-
 
             <h1 class="h3 mb-4 text-gray-800">Hotel Manajer</h1>
 

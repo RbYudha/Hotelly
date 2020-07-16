@@ -79,7 +79,7 @@ class Employee extends CI_Controller
         $this->db->insert('stokingbarang', $post2);
         $this->session->set_flashdata('messageSuc', '<div class="alert alert-success" role="alert">
         Barang berhasil ditambahkan!</div>');
-        redirect('employee');
+        redirect('employee/tambah_barang');
     }
 
     public function stoking_barang()
@@ -112,7 +112,8 @@ class Employee extends CI_Controller
         $this->db->insert('stokingbarang', $post1);
         $this->session->set_flashdata('messageSuc', '<div class="alert alert-success" role="alert">
         Re-stok barang berhasil!</div>');
-        redirect('employee');
+        //redirect('employee');
+        redirect('employee/stoking_barang');
     }
 
 
@@ -121,7 +122,8 @@ class Employee extends CI_Controller
         $data['employee'] = $this->db->get_where('employee', ['email_employee' =>
         $this->session->userdata('email_employee')])->row_array();
 
-        $data1['databarang'] = $this->Dropdown->tampil_data_barang_hbs();
+        //$data1['databarang'] = $this->Dropdown->tampil_data_barang_hbs();
+        $data1['databarang'] = $this->Dropdown->tampil_data_barang();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -141,7 +143,7 @@ class Employee extends CI_Controller
         $this->db->insert('ambilbarang', $post1);
         $this->session->set_flashdata('messageSuc', '<div class="alert alert-success" role="alert">
         Pengambilan Barang berhasil!</div>');
-        redirect('employee');
+        redirect('employee/ambil_barang');
     }
 
     public function lapor_barang()
@@ -172,7 +174,7 @@ class Employee extends CI_Controller
         $this->db->insert('baranghilang', $post1);
         $this->session->set_flashdata('messageSuc', '<div class="alert alert-success" role="alert">
         Barang hilang berhasil dilaporkan!</div>');
-        redirect('employee');
+        redirect('employee/lapor_barang');
     }
 
     public function lihat_tabel_barang()

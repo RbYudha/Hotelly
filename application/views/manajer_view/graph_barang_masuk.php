@@ -141,11 +141,11 @@ foreach ($dataProdukChart as $k => $v) {
             <i class="fa fa-users" aria-hidden="true"></i>
             <span>Data Karyawan</span></a>
     </li>
-    <li class="nav-item">
+    <!-- <li class="nav-item">
         <a class="nav-link" href="<?= base_url('manajer_job/order_stok') ?>">
             <i class="fa fa-shopping-bag" aria-hidden="true"></i>
             <span>List Order</span></a>
-    </li>
+    </li> -->
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('manajer_job/lihat_list_kategori') ?>">
             <i class="fa fa-list" aria-hidden="true"></i>
@@ -234,36 +234,11 @@ foreach ($dataProdukChart as $k => $v) {
                             cursor: "pointer",
                             itemclick: toggleDataSeries
                         },
-                        data: [{
+                        data: [
+
+                            {
                                 type: "spline",
                                 visible: true,
-                                showInLegend: true,
-                                yValueFormatString: "",
-                                name: "Sandal",
-                                dataPoints: <?= json_encode($arrProd1, JSON_NUMERIC_CHECK); ?>
-                            },
-
-                            {
-                                type: "spline",
-                                visible: false,
-                                showInLegend: true,
-                                yValueFormatString: "",
-                                name: "Bantal",
-                                dataPoints: <?= json_encode($arrProd2, JSON_NUMERIC_CHECK); ?>
-                            },
-
-                            {
-                                type: "spline",
-                                visible: false,
-                                showInLegend: true,
-                                yValueFormatString: "",
-                                name: "Handuk",
-                                dataPoints: <?= json_encode($arrProd3, JSON_NUMERIC_CHECK); ?>
-                            },
-
-                            {
-                                type: "spline",
-                                visible: false,
                                 showInLegend: true,
                                 yValueFormatString: "",
                                 name: "Sabun",
@@ -341,6 +316,34 @@ foreach ($dataProdukChart as $k => $v) {
                                 name: "Kopi bubuk",
                                 dataPoints: <?= json_encode($arrProd12, JSON_NUMERIC_CHECK); ?>
                             },
+
+                            {
+                                type: "spline",
+                                visible: false,
+                                showInLegend: true,
+                                yValueFormatString: "",
+                                name: "Handuk",
+                                dataPoints: <?= json_encode($arrProd1, JSON_NUMERIC_CHECK); ?>
+                            },
+
+                            {
+                                type: "spline",
+                                visible: false,
+                                showInLegend: true,
+                                yValueFormatString: "",
+                                name: "Bantal",
+                                dataPoints: <?= json_encode($arrProd2, JSON_NUMERIC_CHECK); ?>
+                            },
+
+                            {
+                                type: "spline",
+                                visible: false,
+                                showInLegend: true,
+                                yValueFormatString: "",
+                                name: "Guling",
+                                dataPoints: <?= json_encode($arrProd3, JSON_NUMERIC_CHECK); ?>
+                            },
+
 
                         ]
                     });

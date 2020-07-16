@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('manajer/index') ?>">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-hotel"></i>
         </div>
@@ -52,11 +52,6 @@
         <a class="nav-link" href="<?= base_url('manajer_job/index') ?>">
             <i class="fa fa-users" aria-hidden="true"></i>
             <span>Data Karyawan</span></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('manajer_job/order_stok') ?>">
-            <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-            <span>List Order</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('manajer_job/lihat_list_kategori') ?>">
@@ -139,7 +134,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#tambahbarang">Tambah Data</button>
+                        <!-- <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#tambahbarang">Tambah Data</button> -->
                         <h1 class="h3 mb-4 text-gray-800">Data Total Barang</h1>
                         <hr>
                         <table class="table table-striped" align="center" id="databarang">

@@ -15,8 +15,9 @@
 <div class="container-fluid">
     <div class="card mb-3" style="max-width: 720px;">
         <div class="card-body">
+            <?= $this->session->flashdata('messageSuc'); ?>
             <div class="text-center">
-                <h1 class="h3 text-gray-900 mb-4">Tambah Barang ke Storage</h1>
+                <h1 class="h3 text-gray-900 mb-4">Tambah Barang Baru ke Storage</h1>
             </div>
             <!-- form -->
             <form class="user" method="post" action="<?= base_url('employee/stok_barang1'); ?>">
@@ -24,7 +25,7 @@
                     <label>Nama employee :</label>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="idemployee" placeholder="" name="idemployee" value="<?= $employee['id_employee'], " - ", $employee['name_employee'];  ?>">
+                    <input type="text" class="form-control" id="idemployee" placeholder="" name="idemployee" value="<?= $employee['id_employee'], " - ", $employee['name_employee'];  ?>" required>
                 </div>
                 <div>
                     <label for="kategori_barang">Pilih kategori barang :</label>
@@ -39,25 +40,29 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="idbarang" placeholder="Masukan ID Barang" name="idbarang" value="<?= set_value('idbarang') ?>">
+                    <input type="text" class="form-control" id="idbarang" placeholder="Masukan ID Barang" name="idbarang" value="<?= set_value('idbarang') ?>" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="namabarang" placeholder="Masukan Nama Barang" name="namabarang" value="<?= set_value('namabarang') ?>">
+                    <input type="text" class="form-control" id="namabarang" placeholder="Masukan Nama Barang" name="namabarang" value="<?= set_value('namabarang') ?>" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="hargabarang" placeholder="Masukan Harga Barang / Pcs" name="hargabarang" value="<?= set_value('hargabarang') ?>">
+                    <input type="text" class="form-control" id="hargabarang" placeholder="Masukan Harga Barang / Pcs" name="hargabarang" value="<?= set_value('hargabarang') ?>" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="stokbarang" placeholder="Masukan Stok Barang" name="stokbarang" value="<?= set_value('stokbarang') ?>">
+                    <input type="text" class="form-control" id="stokbarang" placeholder="Masukan Stok Barang" name="stokbarang" value="<?= set_value('stokbarang') ?>" required>
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" id="datepicker" placeholder="Masukan tanggal" name="datepicker">
                 </div>
-                <button type="submit" class="btn btn-primary btn-user btn-block">
-                    Tambah Barang
-                </button>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="submit" class="btn btn-primary">
+                        Tambah
+                    </button>
+                </div>
             </form>
-            </>
+        </div>
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <a class="btn btn-warning" href="<?= base_url('employee') ?>" role="button">Finish</a>
         </div>
     </div>
 </div>

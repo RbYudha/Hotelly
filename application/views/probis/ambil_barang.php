@@ -15,6 +15,7 @@
 <div class="container-fluid">
     <div class="card mb-3" style="max-width: 720px;">
         <div class="card-body">
+            <?= $this->session->flashdata('messageSuc'); ?>
             <div class="text-center">
                 <h1 class="h3 text-gray-900 mb-4">Ambil Barang dari Storage</h1>
             </div>
@@ -24,7 +25,7 @@
                     <label>Nama employee :</label>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="idemployee" placeholder="" name="idemployee" value="<?= $employee['id_employee'], " - ", $employee['name_employee'];  ?>">
+                    <input type="text" class="form-control" id="idemployee" placeholder="" name="idemployee" value="<?= $employee['id_employee'], " - ", $employee['name_employee'];  ?>" required>
                 </div>
                 <div>
                     <label for="kategori_barang">Pilih barang yang mau diambil:</label>
@@ -39,15 +40,20 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="stokbarang" placeholder="Masukan jumlah barang" name="stokbarang">
+                    <input type="text" class="form-control" id="stokbarang" placeholder="Masukan jumlah barang" name="stokbarang" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="datepicker" placeholder="Masukan tanggal" name="datepicker">
+                    <input type="text" class="form-control" id="datepicker" placeholder="Masukan tanggal" name="datepicker" required>
                 </div>
-                <button type="submit" class="btn btn-primary btn-user btn-block">
-                    Ambil
-                </button>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="submit" class="btn btn-primary">
+                        Ambil
+                    </button>
+                </div>
             </form>
+        </div>
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <a class="btn btn-warning" href="<?= base_url('employee') ?>" role="button">Finish</a>
         </div>
     </div>
 </div>

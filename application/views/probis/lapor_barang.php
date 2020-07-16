@@ -15,6 +15,7 @@
 <div class="container-fluid">
     <div class="card mb-3" style="max-width: 720px;">
         <div class="card-body">
+            <?= $this->session->flashdata('messageSuc'); ?>
             <div class="text-center">
                 <h1 class="h3 text-gray-900 mb-4">Lapor Barang Hilang</h1>
             </div>
@@ -57,12 +58,15 @@
                 <div class="form-group">
                     <input type="text" class="form-control" id="datepicker" placeholder="Masukan tanggal" name="datepicker">
                 </div>
-
-                <button type="submit" class="btn btn-primary btn-user btn-block">
-                    Lapor
-                </button>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="submit" class="btn btn-primary">
+                        Lapor
+                    </button>
+                </div>
+            </form>
         </div>
-        </form>
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <a class="btn btn-warning" href="<?= base_url('employee') ?>" role="button">Finish</a>
+        </div>
     </div>
-</div>
 </div>
