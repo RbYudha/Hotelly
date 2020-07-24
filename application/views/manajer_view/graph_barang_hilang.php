@@ -175,5 +175,5 @@ foreach ($dataProdukChart as $k => $v) {
         <br>
         <div class="container">
             <a href="<?= base_url('manajer/lihat_barang_hilang') ?>" class="btn btn-info" role="button" class="btn btn-primary">Tabel total barang hilang</a>
-            <a href="<?= base_url('data_visual/graph_barang_hilang2') ?>" class="btn btn-primary" role="button" class="btn btn-primary">Data barang hilang berdasarkan kategori kamar</a>
+            <a href="<?= base_url('data_visual/graph_barang_hilang2') ?>" class="btn btn-primary" role="button" class="btn btn-primary">PieChart barang hilang berdasarkan kategori kamar</a>
         </div>

@@ -18,7 +18,7 @@
         <?= $this->session->flashdata('messageSuc'); ?>
         <div class="card-body">
             <div class="text-center">
-                <h1 class="h3 text-gray-900 mb-4">ReStok Barang</h1>
+                <h1 class="h3 text-gray-900 mb-4">Stoking Barang</h1>
             </div>
             <!-- form -->
             <form class="user" method="post" action="<?= base_url('employee/tambah_barang1'); ?>">
@@ -40,11 +40,20 @@
                         ?>
                     </select>
                 </div>
+                <div>
+                    <label>Jumlah barang :</label>
+                </div>
                 <div class="form-group">
                     <input type="text" class="form-control" id="stokbarang" placeholder="Masukan jumlah barang" name="stokbarang" required>
                 </div>
+                <div>
+                    <label>Harga barang :</label>
+                </div>
                 <div class="form-group">
                     <input type="text" class="form-control" id="hargabarang" placeholder="Masukan Harga Barang / Pcs" name="hargabarang" value="<?= set_value('hargabarang') ?>" required>
+                </div>
+                <div>
+                    <label>Tanggal barang masuk :</label>
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" id="datepicker" placeholder="Masukan tanggal" name="datepicker" required>

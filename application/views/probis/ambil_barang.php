@@ -39,8 +39,14 @@
                         ?>
                     </select>
                 </div>
+                <div>
+                    <label>Jumlah barang :</label>
+                </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="stokbarang" placeholder="Masukan jumlah barang" name="stokbarang" required>
+                    <input type="text" class="form-control" id="stokbarang" placeholder="Masukan jumlah barang yang akan diambil" name="stokbarang" required>
+                </div>
+                <div>
+                    <label>Tanggal pengambilan :</label>
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" id="datepicker" placeholder="Masukan tanggal" name="datepicker" required>

@@ -41,7 +41,7 @@
                 </div>
 
                 <div>
-                    <label for="kamar">Pilih kamar:</label>
+                    <label for="kamar">Lokasi hilang :</label>
                 </div>
                 <div class="form-group">
                     <select name="kamar" id="kamar">
@@ -52,8 +52,14 @@
                         ?>
                     </select>
                 </div>
+                <div>
+                    <label>Jumlah hilang :</label>
+                </div>
                 <div class="form-group">
                     <input type="text" class="form-control" id="jumlah_hilang" placeholder="Masukan jumlah barang yang hilang" name="jumlah_hilang">
+                </div>
+                <div>
+                    <label>Tanggal hilang :</label>
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" id="datepicker" placeholder="Masukan tanggal" name="datepicker">

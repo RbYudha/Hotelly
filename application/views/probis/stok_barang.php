@@ -39,17 +39,32 @@
                         ?>
                     </select>
                 </div>
+                <div>
+                    <label>ID barang :</label>
+                </div>
                 <div class="form-group">
                     <input type="text" class="form-control" id="idbarang" placeholder="Masukan ID Barang" name="idbarang" value="<?= set_value('idbarang') ?>" required>
+                </div>
+                <div>
+                    <label>Nama barang :</label>
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" id="namabarang" placeholder="Masukan Nama Barang" name="namabarang" value="<?= set_value('namabarang') ?>" required>
                 </div>
+                <div>
+                    <label>Harga barang :</label>
+                </div>
                 <div class="form-group">
                     <input type="text" class="form-control" id="hargabarang" placeholder="Masukan Harga Barang / Pcs" name="hargabarang" value="<?= set_value('hargabarang') ?>" required>
                 </div>
+                <div>
+                    <label>Jumlah barang :</label>
+                </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="stokbarang" placeholder="Masukan Stok Barang" name="stokbarang" value="<?= set_value('stokbarang') ?>" required>
+                    <input type="text" class="form-control" id="stokbarang" placeholder="Masukan jumlah Barang" name="stokbarang" value="<?= set_value('stokbarang') ?>" required>
+                </div>
+                <div>
+                    <label>Tanggal barang masuk :</label>
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" id="datepicker" placeholder="Masukan tanggal" name="datepicker">
