@@ -56,13 +56,13 @@
                     <label>Jumlah hilang :</label>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="jumlah_hilang" placeholder="Masukan jumlah barang yang hilang" name="jumlah_hilang">
+                    <input type="text" class="form-control" id="jumlah_hilang" placeholder="Masukan jumlah barang yang hilang" name="jumlah_hilang" required>
                 </div>
                 <div>
                     <label>Tanggal hilang :</label>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="datepicker" placeholder="Masukan tanggal" name="datepicker">
+                    <input type="text" class="form-control" id="datepicker" placeholder="Masukan tanggal" name="datepicker" required>
                 </div>
                 <div class="btn-group" role="group" aria-label="Basic example">
                     <button type="submit" class="btn btn-primary">
